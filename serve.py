@@ -22,7 +22,7 @@ HEADERS = [
     ("Cross-Origin-Resource-Policy", "same-origin"),
     (
         "Content-Security-Policy",
-        "default-src 'none'; img-src 'self' data:; style-src 'self'; "
+        "default-src 'none'; img-src 'self' data:; font-src 'self'; style-src 'self'; "
         "script-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'",
     ),
 ]

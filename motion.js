@@ -39,7 +39,7 @@
     name.textContent = full.slice(0, ++index);
 
     if (index < full.length) {
-      setTimeout(type, full[index - 1] === " " ? 75 : 45);
+      setTimeout(type, full[index - 1] === " " ? 110 : 68);
       return;
     }
 
@@ -50,8 +50,8 @@
       reveals.forEach((el, i) => {
         setTimeout(() => el.classList.add("is-in"), i * 45);
       });
-    }, 180);
+    }, 200);
   }
 
-  setTimeout(type, 220);
+  setTimeout(type, 260);
 })();

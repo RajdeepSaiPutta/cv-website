@@ -8,22 +8,28 @@
       name="description"
       content="a directory of the things i build, mostly python and a bit of react, with screenshots."
     />
-    <meta name="color-scheme" content="light dark" />
+    <meta name="color-scheme" content="dark" />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'none'; img-src 'self' data:; style-src 'self'; script-src 'self'; base-uri 'none'; form-action 'none'"
+      content="default-src 'none'; img-src 'self' data:; font-src 'self'; style-src 'self'; script-src 'self'; base-uri 'none'; form-action 'none'"
     />
     <meta name="referrer" content="no-referrer" />
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-    <meta name="theme-color" content="#f7f7f7" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#1f2123" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#1f2123" />
     <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="preload"
+      href="assets/fonts/playfair-display-600.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
     <noscript><link rel="stylesheet" href="no-js.css" /></noscript>
   </head>
   <body>
     <header class="site-head">
-      <h1 class="wordmark wordmark--name" aria-label="rajdeep putta">
-        <span class="wordmark__text" data-type="rajdeep putta" aria-hidden="true">rajdeep putta</span><span
+      <h1 class="wordmark wordmark--name" aria-label="Rajdeep Putta">
+        <span class="wordmark__text" data-type="Rajdeep Putta" aria-hidden="true">Rajdeep Putta</span><span
           class="wordmark__caret"
           aria-hidden="true"
         ></span>
@@ -36,20 +42,13 @@
       </p>
 
       <p class="intro reveal">
-        the mermun site at the top is the live one, at
-        <a href="https://meridianmadhapurmun.pages.dev">meridianmadhapurmun.pages.dev</a>. the rest
-        point at <a href="https://github.com/RajdeepSaiPutta">github</a>. each card is labelled
-        private or public, so you know which repos are open to everyone.
-      </p>
-
-      <p class="intro reveal">
         reach me at <a href="mailto:rajdeepputta@gmail.com">rajdeepputta@gmail.com</a> or
         <a href="tel:+919515951057">9515951057</a>.
       </p>
 
       <div class="head-tools reveal">
         <a href="https://github.com/RajdeepSaiPutta">open my github</a>
-        <button type="button" id="random">take me to a random one</button>
+        <a href="https://meridianmadhapurmun.pages.dev">take me to mermun</a>
       </div>
     </header>
 
@@ -78,14 +77,14 @@
         </ul>
       </section>
 
-      <section class="section reveal" aria-labelledby="certifications-title">
+      <section class="section section--link reveal" aria-labelledby="certifications-title">
         <h2 class="section__title" id="certifications-title">
           <a class="section__link" href="certifications.html">certifications</a>
         </h2>
       </section>
 
       <section class="section reveal" aria-labelledby="lecture-title">
-        <h2 class="section__title" id="lecture-title">guest lecture to students</h2>
+        <h2 class="section__title" id="lecture-title">guest lecture</h2>
 
         <p class="section__intro">
           gave a guest lecture on the machine learning and agentic work behind mako and voicr.

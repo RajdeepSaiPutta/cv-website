@@ -108,8 +108,3 @@ function card(site) {
 }
 
 for (const site of sites) grid.append(card(site));
-
-document.getElementById("random").addEventListener("click", () => {
-  const site = sites[Math.floor(Math.random() * sites.length)];
-  window.open(site.url, "_blank", "noopener");
-});
