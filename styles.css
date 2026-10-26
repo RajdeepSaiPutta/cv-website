@@ -187,6 +187,22 @@ html.js .reveal.is-in {
   text-decoration-color: currentColor;
 }
 
+.random-link,
+.intro a.random-link {
+  display: inline-block;
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--name-red);
+  text-underline-offset: 4px;
+}
+
+.random-link:hover,
+.intro a.random-link:hover {
+  color: var(--text);
+  text-decoration-color: var(--name-red);
+}
+
 /* —— bits under the intro —— */
 
 .head-tools {
