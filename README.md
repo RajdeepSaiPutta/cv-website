@@ -10,7 +10,7 @@ a directory of the things i build, in the style of personalsit.es. plain html an
 - `motion.js` — the typed name and the fade-in
 - `no-js.css` — reveals the page when javascript is off
 - `styles.css` — all the styling
-- `assets/` — screenshots, certificates, the lecture photo, the favicon, and the Playfair Display font with its license
+- `assets/` — screenshots, certificates, the lecture photo, the favicon, and the Libre Caslon Display font with its license
 - `serve.py` — local server that sends the same security headers as `_headers`
 - `_headers` — the security headers to apply when this is hosted (cloudflare pages, netlify)
 

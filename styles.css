@@ -5,9 +5,9 @@
    ———————————————————————————————————————————————— */
 
 @font-face {
-  font-family: "Playfair Display";
-  src: url("assets/fonts/playfair-display-600.woff2") format("woff2");
-  font-weight: 600;
+  font-family: "Libre Caslon Display";
+  src: url("assets/fonts/libre-caslon-display-400.woff2") format("woff2");
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
@@ -112,9 +112,9 @@ button:focus-visible {
 }
 
 .wordmark--name {
-  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  font-family: "Libre Caslon Display", Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
   color: var(--name-red);
 }
 
