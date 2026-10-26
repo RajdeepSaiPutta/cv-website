@@ -1,13 +1,14 @@
 # portfolio
 
-a directory of the things i build, in the style of personalsit.es. one html file, one css file, no build step.
+a directory of the things i build, in the style of personalsit.es. plain html and css, no build step.
 
 ## files
 
 - `index.html` — the page, the skills section, and the footer
+- `certifications.html` — the certificate page linked from the main page
 - `app.js` — the list of projects (the `sites` array) and the card markup
 - `styles.css` — all the styling, light and dark
-- `assets/` — screenshots of each project, plus the favicon
+- `assets/` — screenshots, certificates, the lecture photo, and the favicon
 - `serve.py` — local server that sends the same security headers as `_headers`
 - `_headers` — the security headers to apply when this is hosted (cloudflare pages, netlify)
 

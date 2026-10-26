@@ -48,6 +48,28 @@
     </header>
 
     <main>
+      <section class="section" aria-labelledby="experience-title">
+        <h2 class="section__title" id="experience-title">work experience</h2>
+
+        <article class="job">
+          <div class="job__head">
+            <h3 class="job__role">summer intern</h3>
+            <p class="job__org">cedura tech</p>
+          </div>
+          <p class="job__desc">
+            selected on merit. built and shipped mako, a fastapi research and writing service, and
+            voicr, a browser voice assistant over a websocket. both run on groq, with guardrails and
+            rate limits; voicr also has auth, pii filtering and an audit log.
+          </p>
+          <ul class="job__tags">
+            <li>python</li>
+            <li>fastapi</li>
+            <li>groq</li>
+            <li>websockets</li>
+          </ul>
+        </article>
+      </section>
+
       <section class="skills" aria-labelledby="skills-title">
         <h2 class="skills__title" id="skills-title">skills:</h2>
         <ul class="skills__list">
@@ -58,11 +80,37 @@
         </ul>
       </section>
 
-      <ul class="grid" id="grid"></ul>
+      <section class="section" aria-labelledby="certifications-title">
+        <h2 class="section__title" id="certifications-title">
+          <a class="section__link" href="certifications.html">certifications</a>
+        </h2>
+      </section>
+
+      <section class="section" aria-labelledby="lecture-title">
+        <h2 class="section__title" id="lecture-title">guest lecture to students</h2>
+
+        <p class="section__intro">
+          gave a guest lecture on the machine learning and agentic work behind mako and voicr.
+        </p>
+
+        <figure class="lecture">
+          <img
+            src="assets/guest-lecture.jpeg"
+            alt="rajdeep giving a guest lecture to a room of students"
+            loading="lazy"
+          />
+          <figcaption>the guest lecture, in progress.</figcaption>
+        </figure>
+      </section>
+
+      <section class="projects" aria-labelledby="projects-title">
+        <h2 class="section__title projects__title" id="projects-title">projects</h2>
+        <ul class="grid" id="grid"></ul>
+      </section>
     </main>
 
     <footer class="foot">
-      <p>built by hand, one html file and one css file, no build step. updated october 2026.</p>
+      <p>built by hand, plain html and css, no build step. updated october 2026.</p>
     </footer>
 
     <script src="app.js"></script>

@@ -203,6 +203,193 @@ button:focus-visible {
   color: var(--text-faint);
 }
 
+/* —— work experience, certifications, guest lecture —— */
+
+.section {
+  max-inline-size: var(--max);
+  margin-inline: auto;
+  padding: 2rem 1rem 0;
+  border-block-start: 1px solid var(--border);
+}
+
+.section__title {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-block-end: 0.75rem;
+}
+
+.section__link {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: currentColor;
+}
+
+.section__link:hover {
+  color: var(--accent);
+}
+
+.site-head--sub {
+  padding-block: 3.5rem 1.5rem;
+}
+
+.site-head--sub .wordmark {
+  margin-block-end: 0.75rem;
+}
+
+.back {
+  display: inline-block;
+  margin-block-end: 1.5rem;
+  font-size: 0.875rem;
+  color: var(--text-soft);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--text-faint);
+}
+
+.back:hover {
+  color: var(--text);
+  text-decoration-color: currentColor;
+}
+
+.section--flush {
+  padding-block-start: 0;
+  border-block-start: 0;
+}
+
+.section--flush .certs {
+  padding-block-end: 4rem;
+}
+
+.section__intro {
+  max-inline-size: 46rem;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: var(--text-soft);
+}
+
+.job {
+  max-inline-size: 46rem;
+}
+
+.job__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 0.9rem;
+}
+
+.job__role {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.job__org {
+  font-size: 0.9375rem;
+  color: var(--text-soft);
+}
+
+.job__desc {
+  margin-block-start: 0.5rem;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: var(--text-soft);
+}
+
+.job__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-block-start: 0.55rem;
+  font-size: 0.75rem;
+  color: var(--text-faint);
+}
+
+.job__tags li + li::before {
+  content: "· ";
+  opacity: 0.7;
+}
+
+.certs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  max-inline-size: var(--max);
+}
+
+.cert {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--card);
+}
+
+.cert a,
+.cert img {
+  display: block;
+}
+
+.cert img {
+  inline-size: 100%;
+  block-size: auto;
+}
+
+.cert figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.25rem 0.75rem;
+  padding: 0.65rem 0.75rem 0.7rem;
+  font-size: 0.875rem;
+}
+
+.cert figcaption span:last-child {
+  color: var(--text-faint);
+}
+
+.lecture {
+  max-inline-size: 52rem;
+  margin-block-start: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--card);
+}
+
+.lecture img {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+}
+
+.lecture figcaption {
+  padding: 0.65rem 0.75rem 0.7rem;
+  font-size: 0.875rem;
+  color: var(--text-soft);
+}
+
+.projects {
+  max-inline-size: var(--max);
+  margin: 2.25rem auto 0;
+  border-block-start: 1px solid var(--border);
+}
+
+.projects__title {
+  padding: 1.75rem 1rem 0;
+}
+
+.projects .grid {
+  padding-block-start: 1.25rem;
+}
+
+@media (max-width: 560px) {
+  .certs {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* —— the list —— */
 
 .grid {
