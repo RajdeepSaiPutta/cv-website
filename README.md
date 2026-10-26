@@ -7,6 +7,8 @@ a directory of the things i build, in the style of personalsit.es. plain html an
 - `index.html` — the page, the skills section, and the footer
 - `certifications.html` — the certificate page linked from the main page
 - `app.js` — the list of projects (the `sites` array) and the card markup
+- `motion.js` — the typed name and the fade-in
+- `no-js.css` — reveals the page when javascript is off
 - `styles.css` — all the styling, light and dark
 - `assets/` — screenshots, certificates, the lecture photo, and the favicon
 - `serve.py` — local server that sends the same security headers as `_headers`

@@ -1,0 +1,12 @@
+html.js .wordmark__text {
+  opacity: 1 !important;
+}
+
+html.js .reveal {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+html.js .wordmark__caret {
+  display: none !important;
+}

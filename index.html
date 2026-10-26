@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="js">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -18,37 +18,43 @@
     <meta name="theme-color" content="#f7f7f7" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#1f2123" media="(prefers-color-scheme: dark)" />
     <link rel="stylesheet" href="styles.css" />
+    <noscript><link rel="stylesheet" href="no-js.css" /></noscript>
   </head>
   <body>
     <header class="site-head">
-      <h1 class="wordmark">rajdeep putta</h1>
+      <h1 class="wordmark wordmark--name" aria-label="rajdeep putta">
+        <span class="wordmark__text" data-type="rajdeep putta" aria-hidden="true">rajdeep putta</span><span
+          class="wordmark__caret"
+          aria-hidden="true"
+        ></span>
+      </h1>
 
-      <p class="intro">
+      <p class="intro reveal">
         this is a directory of the things i build, kept in one place so they are easy to find. six
         projects, mostly python and a bit of react, each with a screenshot of it running. click a
         card and it opens the app or the repo.
       </p>
 
-      <p class="intro">
+      <p class="intro reveal">
         the mermun site at the top is the live one, at
         <a href="https://meridianmadhapurmun.pages.dev">meridianmadhapurmun.pages.dev</a>. the rest
         point at <a href="https://github.com/RajdeepSaiPutta">github</a>. each card is labelled
         private or public, so you know which repos are open to everyone.
       </p>
 
-      <p class="intro">
+      <p class="intro reveal">
         reach me at <a href="mailto:rajdeepputta@gmail.com">rajdeepputta@gmail.com</a> or
         <a href="tel:+919515951057">9515951057</a>.
       </p>
 
-      <div class="head-tools">
+      <div class="head-tools reveal">
         <a href="https://github.com/RajdeepSaiPutta">open my github</a>
         <button type="button" id="random">take me to a random one</button>
       </div>
     </header>
 
     <main>
-      <section class="section" aria-labelledby="experience-title">
+      <section class="section reveal" aria-labelledby="experience-title">
         <h2 class="section__title" id="experience-title">work experience</h2>
 
         <article class="job">
@@ -62,7 +68,7 @@
         </article>
       </section>
 
-      <section class="skills" aria-labelledby="skills-title">
+      <section class="skills reveal" aria-labelledby="skills-title">
         <h2 class="skills__title" id="skills-title">skills:</h2>
         <ul class="skills__list">
           <li>machine learning and deep learning (python, pytorch, polars)</li>
@@ -72,13 +78,13 @@
         </ul>
       </section>
 
-      <section class="section" aria-labelledby="certifications-title">
+      <section class="section reveal" aria-labelledby="certifications-title">
         <h2 class="section__title" id="certifications-title">
           <a class="section__link" href="certifications.html">certifications</a>
         </h2>
       </section>
 
-      <section class="section" aria-labelledby="lecture-title">
+      <section class="section reveal" aria-labelledby="lecture-title">
         <h2 class="section__title" id="lecture-title">guest lecture to students</h2>
 
         <p class="section__intro">
@@ -95,16 +101,17 @@
         </figure>
       </section>
 
-      <section class="projects" aria-labelledby="projects-title">
+      <section class="projects reveal" aria-labelledby="projects-title">
         <h2 class="section__title projects__title" id="projects-title">projects</h2>
         <ul class="grid" id="grid"></ul>
       </section>
     </main>
 
-    <footer class="foot">
+    <footer class="foot reveal">
       <p>updated october 2026.</p>
     </footer>
 
+    <script src="motion.js"></script>
     <script src="app.js"></script>
   </body>
 </html>
