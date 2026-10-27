@@ -341,6 +341,15 @@ html.js .reveal.is-in {
   color: var(--text-soft);
 }
 
+.section--experience {
+  text-align: center;
+}
+
+.section--experience .job {
+  max-inline-size: 46rem;
+  margin-inline: auto;
+}
+
 .job {
   max-inline-size: 46rem;
 }
@@ -350,6 +359,10 @@ html.js .reveal.is-in {
   flex-wrap: wrap;
   align-items: baseline;
   gap: 0.25rem 0.9rem;
+}
+
+.section--experience .job__head {
+  justify-content: center;
 }
 
 .job__role {
