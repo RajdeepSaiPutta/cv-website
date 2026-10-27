@@ -61,9 +61,11 @@ function card(site) {
   const el = document.createElement("article");
   el.className = "entry";
 
-  const shot = document.createElement("a");
+  const isLocked = site.access === "private" && site.name !== "meridian madhapur mun";
+
+  const shot = document.createElement(isLocked ? "div" : "a");
   shot.className = "entry__shot";
-  shot.href = site.url;
+  if (!isLocked) shot.href = site.url;
   const img = document.createElement("img");
   img.src = site.shot;
   img.alt = "screenshot of " + site.name;
@@ -75,14 +77,14 @@ function card(site) {
 
   const foot = document.createElement("div");
   foot.className = "entry__foot";
-  const name = document.createElement("a");
+  const name = document.createElement(isLocked ? "span" : "a");
   name.className = "entry__name";
-  name.href = site.url;
+  if (!isLocked) name.href = site.url;
   name.textContent = site.name;
-  const open = document.createElement("a");
+  const open = document.createElement(isLocked ? "span" : "a");
   open.className = "entry__open";
-  open.href = site.url;
-  open.textContent = "open ↗";
+  if (!isLocked) open.href = site.url;
+  open.textContent = isLocked ? "private" : "open ↗";
   foot.append(name, open);
 
   const desc = document.createElement("p");
@@ -92,7 +94,7 @@ function card(site) {
   const meta = document.createElement("p");
   meta.className = "entry__meta";
   const code = document.createElement("code");
-  code.textContent = site.shown;
+  code.textContent = isLocked ? "private" : site.shown;
   meta.append(code);
 
   const tags = document.createElement("ul");
@@ -108,3 +110,18 @@ function card(site) {
 }
 
 for (const site of sites) grid.append(card(site));
+
+// Cert slider arrows
+const track = document.querySelector(".certs-track");
+const prevBtn = document.querySelector(".certs-arrow--prev");
+const nextBtn = document.querySelector(".certs-arrow--next");
+
+if (track && prevBtn && nextBtn) {
+  const step = 220;
+  prevBtn.addEventListener("click", () => {
+    track.scrollBy({ left: -step, behavior: "smooth" });
+  });
+  nextBtn.addEventListener("click", () => {
+    track.scrollBy({ left: step, behavior: "smooth" });
+  });
+}
