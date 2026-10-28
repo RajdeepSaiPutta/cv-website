@@ -5,7 +5,7 @@ const sites = [
     shown: "meridianmadhapurmun.pages.dev",
     shot: "assets/meridianmun.png",
     access: "private",
-    desc: "the website for the meridian madhapur mun 2026 conference. committees, background guides, registration, and a hero that spins as you scroll.",
+    desc: "the full site for the meridian madhapur mun 2026 conference. built the committee matrix with downloadable background guides, a registration flow with deadline tracking, and a scroll-driven hero with a spinning globe. deployed on cloudflare pages and pressure-tested when registration actually opened for 200+ delegates.",
     tags: ["web", "next.js", "react", "tailwind", "event"],
   },
   {
@@ -14,7 +14,7 @@ const sites = [
     shown: "github.com/RajdeepSaiPutta/evaluator-gui",
     shot: "assets/evaluator-gui.png",
     access: "private",
-    desc: "a desktop app for grading exam answer sheets. it reads the answer, marks each question against the marking scheme, and shows the teacher where every mark came from.",
+    desc: "a desktop app that grades scanned exam answer sheets. the pipeline deskews and crops each answer region, then a small local model compares the handwriting against the marking scheme and writes a per-question breakdown so the teacher sees exactly where every mark came from. built with tauri so it ships as one small binary.",
     tags: ["desktop", "react", "tauri", "ai"],
   },
   {
@@ -23,7 +23,7 @@ const sites = [
     shown: "github.com/RajdeepSaiPutta/medvault",
     shot: "assets/medvault.png",
     access: "private",
-    desc: "keeps medical reports in one place. you photograph a report, it reads and sorts it, and the reports build up a timeline of your history with notes from your doctor.",
+    desc: "keeps a person's entire medical history in one place. photograph a report and the app parses it into structured fields - patient block, tests, results - then stitches every visit into one timeline with doctor notes attached. ocr and parsing run server-side so the phone stays light. built with react native and expo, backed by supabase.",
     tags: ["mobile", "react native", "expo", "supabase", "ai"],
   },
   {
@@ -32,7 +32,7 @@ const sites = [
     shown: "huggingface.co/rajdeepp11/500mWithRAG-fromscratch",
     shot: "assets/500m-llm.png",
     access: "public",
-    desc: "a 500 million parameter language model trained from scratch on fineweb edu, with a small rag chat on top of it. the repo with the training code is on github.",
+    desc: "a 500 million parameter decoder-only transformer trained completely from scratch on a single rtx 5070 - my own bpe tokenizer, a fineweb-edu data pipeline with dedup and quality filtering, mixed-precision training under a cosine lr schedule, and checkpoints evaluated on the way. on top sits a small rag chat layer over the trained weights. the project where scaling laws stopped being abstract.",
     tags: ["python", "pytorch", "llm", "ai"],
   },
   {
@@ -41,7 +41,7 @@ const sites = [
     shown: "github.com/RajdeepSaiPutta/voicr",
     shot: "assets/voicr.png",
     access: "public",
-    desc: "a voice assistant that runs in the browser. press the mic, talk, and it answers out loud. it can search the web and keep notes for you.",
+    desc: "a voice assistant living in the browser. it streams mic audio over websockets, transcribes with whisper, answers with a small llm that can search the web and keep notes across sessions, then speaks the reply back - all near real-time. taught me audio chunking, backpressure, and why latency budgets aren't optional.",
     tags: ["python", "ai", "audio", "websockets", "groq"],
   },
   {
@@ -50,7 +50,7 @@ const sites = [
     shown: "github.com/RajdeepSaiPutta/mako",
     shot: "assets/mako.png",
     access: "public",
-    desc: "a marketing and journalling pipeline. give it a link or a pdf and it researches the company, writes an article and scores the seo.",
+    desc: "a research-to-content pipeline. feed it a link or a pdf and it crawls the company, extracts the claims worth making, drafts an article from them, then scores its own seo with a rubric before sending the doc back. my first multi-step agent, and the reason i learned to love structured outputs.",
     tags: ["python", "ai", "web", "groq"],
   },
 ];
