@@ -164,18 +164,24 @@
 
       <section class="projects reveal" aria-labelledby="projects-title">
         <h2 class="section__title projects__title" id="projects-title">Projects</h2>
-        <div class="projects-table">
-          <table>
-            <thead>
-              <tr><th>Project</th><th>Description</th><th>Status</th></tr>
-            </thead>
-            <tbody id="grid"></tbody>
-          </table>
+      <section class="projects reveal" aria-labelledby="projects-title">
+        <h2 class="section__title projects__title" id="projects-title">Projects</h2>
+        <div class="projects-split">
+          <nav class="projects-list">
+            <ul id="grid"></ul>
+          </nav>
+          <aside class="projects-detail" aria-live="polite">
+            <div class="detail-placeholder">Select a project</div>
+            <div class="detail-content" style="display:none;">
+              <button class="detail-close" aria-label="close details">×</button>
+              <h3 class="detail-name"></h3>
+              <p class="detail-status"></p>
+              <p class="detail-desc"></p>
+              <p class="detail-stack"></p>
+              <a class="detail-link" target="_blank" rel="noopener">View project →</a>
+            </div>
+          </aside>
         </div>
-        <dialog class="project-modal">
-          <button class="modal-close" aria-label="close">×</button>
-          <div class="modal-content"></div>
-        </dialog>
       </section>
     </main>
 

@@ -56,61 +56,81 @@ const sites = [
 ];
 
 const grid = document.getElementById("grid");
+const detailName = document.querySelector(".detail-name");
+const detailStatus = document.querySelector(".detail-status");
+const detailDesc = document.querySelector(".detail-desc");
+const detailStack = document.querySelector(".detail-stack");
+const detailLink = document.querySelector(".detail-link");
+const detailContent = document.querySelector(".detail-content");
+const detailPlaceholder = document.querySelector(".detail-placeholder");
+const detailClose = document.querySelector(".detail-close");
+const modal = document.querySelector(".project-modal");
 
 function isLocked(site) {
   return site.access === "private" && site.name !== "meridian madhapur mun";
 }
 
-function row(site) {
-  const tr = document.createElement("tr");
-  tr.className = "project-row" + (isLocked(site) ? " locked" : "");
+function selectSite(site, linkEl) {
+  // update active state
+  document.querySelectorAll(".projects-list a").forEach(a => a.classList.remove("current"));
+  if (linkEl) linkEl.classList.add("current");
 
-  const tdName = document.createElement("td");
-  const nameLink = document.createElement(isLocked(site) ? "span" : "a");
-  nameLink.className = "project-name";
-  if (!isLocked(site)) nameLink.href = site.url;
-  nameLink.textContent = site.name;
-  tdName.appendChild(nameLink);
+  // populate detail panel
+  detailName.textContent = site.name;
+  detailStatus.textContent = site.access === "public" ? "Open source" : "Closed source";
+  detailDesc.textContent = site.desc;
+  const tagsHtml = site.tags.map(t => `<span style="margin-right:0.5rem;color:var(--text-faint);">${t}</span>`).join("");
+  detailStack.innerHTML = `<strong>Stack:</strong> ${tagsHtml}`;
 
-  const tdDesc = document.createElement("td");
-  tdDesc.className = "project-desc";
-  tdDesc.textContent = site.desc;
-
-  const tdStatus = document.createElement("td");
-  tdStatus.className = "project-status";
-  tdStatus.textContent = site.access === "public" ? "Open source" : "Closed source";
-
-  tr.append(tdName, tdDesc, tdStatus);
-
-  if (!isLocked(site)) {
-    tr.addEventListener("click", () => openModal(site));
+  if (site.access === "public") {
+    detailLink.href = site.url;
+    detailLink.style.display = "inline-block";
+  } else {
+    detailLink.style.display = "none";
   }
 
-  return tr;
+  detailPlaceholder.style.display = "none";
+  detailContent.style.display = "block";
 }
 
-function openModal(site) {
-  const modal = document.querySelector(".project-modal");
-  const content = document.querySelector(".modal-content");
-  const statusText = site.access === "public" ? "Open source" : "Closed source";
-  content.innerHTML = `
-    <h3>${site.name}</h3>
-    <p>${site.desc}</p>
-    <p><strong>Stack:</strong> ${site.tags.join(", ")}</p>
-    <p><strong>Status:</strong> ${statusText}</p>
-    ${site.access === "public" ? `<a href="${site.url}" target="_blank" rel="noopener">View project →</a>` : ""}
-  `;
-  modal.showModal();
+function closeDetail() {
+  detailPlaceholder.style.display = "block";
+  detailContent.style.display = "none";
+  document.querySelectorAll(".projects-list a").forEach(a => a.classList.remove("current"));
 }
 
-const modalClose = document.querySelector(".modal-close");
-if (modalClose) {
-  modalClose.addEventListener("click", () => {
-    document.querySelector(".project-modal").close();
-  });
+if (detailClose) {
+  detailClose.addEventListener("click", closeDetail);
 }
 
-for (const site of sites) grid.append(row(site));
+for (const site of sites) {
+  const li = document.createElement("li");
+  const a = document.createElement("a");
+  a.href = "#";
+  a.textContent = site.name;
+  if (isLocked(site)) {
+    a.style.pointerEvents = "none";
+    a.style.opacity = "0.6";
+    a.style.color = var(--text-faint) || "inherit";
+    a.style.textDecoration = "none";
+  } else {
+    a.addEventListener("click", (e) => {
+      e.preventDefault();
+      selectSite(site, a);
+    });
+  }
+  li.appendChild(a);
+  grid.appendChild(li);
+}
+
+// select the first non-locked project by default
+const firstPublic = sites.find(s => !isLocked(s));
+if (firstPublic && grid.firstElementChild) {
+  // find the corresponding link element
+  const links = grid.querySelectorAll("a");
+  const targetLink = [...links].find(l => l.textContent.trim() === firstPublic.name);
+  if (targetLink) selectSite(firstPublic, targetLink);
+}
 
 // Cert slider arrows
 const track = document.querySelector(".certs-track");
