@@ -69,12 +69,13 @@
   canvas.style.height = "100%";
   canvas.style.zIndex = "-1";
   canvas.style.pointerEvents = "none";
-  canvas.style.opacity = "0.05";
+  canvas.style.opacity = "0.04";
   document.body.insertBefore(canvas, document.body.firstChild);
   document.body.style.background = "transparent";
 
   const ctx = canvas.getContext("2d");
-  const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+  const fishes = ["><>", "><((()>", "<)))]><", "><(((°>", "><(((°\\", "><>"];
+  const bubbles = ["o", "O", "°"];
   const particles = [];
 
   function resize() {
@@ -86,34 +87,59 @@
 
   const fgColor = getComputedStyle(document.documentElement).getPropertyValue("--text-faint").trim();
 
-  class Particle {
+  class Fish {
     constructor() {
       this.reset();
     }
     reset() {
       this.x = Math.random() * canvas.width;
       this.y = Math.random() * canvas.height;
-      this.vx = (Math.random() - 0.5) * 0.15;
-      this.vy = (Math.random() - 0.5) * 0.15;
-      this.char = chars[Math.floor(Math.random() * chars.length)];
-      this.fontSize = Math.random() * 8 + 10;
+      this.vx = (Math.random() * 0.6 + 0.2) * (Math.random() > 0.5 ? 1 : -1);
+      this.vy = (Math.random() - 0.5) * 0.1;
+      this.fish = fishes[Math.floor(Math.random() * fishes.length)];
+      this.fontSize = Math.random() * 10 + 12;
     }
     update() {
       this.x += this.vx;
       this.y += this.vy;
-      if (this.x < 0) this.x = canvas.width;
-      if (this.x > canvas.width) this.x = 0;
+      if (this.vx > 0 && this.x > canvas.width) this.x = -this.fontSize * 4;
+      if (this.vx < 0 && this.x < -this.fontSize * 4) this.x = canvas.width;
       if (this.y < 0) this.y = canvas.height;
       if (this.y > canvas.height) this.y = 0;
     }
     draw() {
       ctx.font = this.fontSize + "px monospace";
       ctx.fillStyle = fgColor;
-      ctx.fillText(this.char, this.x, this.y);
+      ctx.fillText(this.fish, this.x, this.y);
     }
   }
 
-  for (let i = 0; i < 24; i++) particles.push(new Particle());
+  class Bubble {
+    constructor() {
+      this.reset();
+    }
+    reset() {
+      this.x = Math.random() * canvas.width;
+      this.y = canvas.height + Math.random() * 100;
+      this.vy = -(Math.random() * 0.4 + 0.1);
+      this.size = Math.random() * 6 + 4;
+      this.char = bubbles[Math.floor(Math.random() * bubbles.length)];
+    }
+    update() {
+      this.y += this.vy;
+      if (this.y < -20) this.reset();
+    }
+    draw() {
+      ctx.font = this.size + "px monospace";
+      ctx.fillStyle = fgColor;
+      ctx.globalAlpha = 0.5;
+      ctx.fillText(this.char, this.x, this.y);
+      ctx.globalAlpha = 1;
+    }
+  }
+
+  for (let i = 0; i < 6; i++) particles.push(new Fish());
+  for (let i = 0; i < 8; i++) particles.push(new Bubble());
 
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);

@@ -70,6 +70,8 @@ body {
   font-size: 100%;
   line-height: 1.35;
   -webkit-font-smoothing: antialiased;
+  position: relative;
+  z-index: 1;
 }
 
 a {
@@ -709,7 +711,7 @@ html.js .reveal.is-in {
 .foot {
   max-inline-size: var(--max);
   margin-inline: auto;
-  padding: 0 1rem 4rem;
+  padding: 4rem 1rem 6rem;
   font-size: 0.875rem;
   color: var(--text-faint);
 }
@@ -790,6 +792,16 @@ html.js .reveal.is-in {
 
 .project-row:not(.locked):hover {
   background: var(--card);
+}
+
+.project-row:not(.locked):hover .project-name {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.project-row:not(.locked):hover .project-status::after {
+  content: " →";
+  color: var(--text-soft);
 }
 
 .project-row.locked {
