@@ -56,6 +56,60 @@
   setTimeout(type, 260);
 })();
 
+// salt-desert moon: draw the ascii art as a full-viewport grid of cells
+(() => {
+  const pre = document.querySelector(".moon-bg");
+  if (!pre) return;
+  const rows = pre.textContent.split("\n");
+  while (rows.length && rows[rows.length - 1].trim() === "") rows.pop();
+  const cols = Math.max(...rows.map(r => r.length));
+  if (!cols) return;
+
+  const canvas = document.createElement("canvas");
+  canvas.style.position = "fixed";
+  canvas.style.top = "0";
+  canvas.style.left = "0";
+  canvas.style.zIndex = "-2";
+  canvas.style.pointerEvents = "none";
+  canvas.style.userSelect = "none";
+  document.body.insertBefore(canvas, document.body.firstChild);
+  pre.remove();
+
+  const ctx = canvas.getContext("2d");
+  const shades = { "█": 0.13, "▇": 0.07 };
+
+  function draw() {
+    const dpr = window.devicePixelRatio || 1;
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    canvas.style.width = w + "px";
+    canvas.style.height = h + "px";
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    // cells cover the viewport, cropped and centered like a photo
+    const aspect = 1.9; // glyph cell height vs width
+    const cellW = Math.max(w / cols, h / (rows.length * aspect));
+    const cellH = cellW * aspect;
+    const offX = (w - cols * cellW) / 2;
+    const offY = (h - rows.length * cellH) / 2;
+    ctx.clearRect(0, 0, w, h);
+
+    for (let y = 0; y < rows.length; y++) {
+      const row = rows[y];
+      for (let x = 0; x < row.length; x++) {
+        const a = shades[row[x]];
+        if (a === undefined) continue;
+        ctx.fillStyle = "rgba(226, 226, 226, " + a + ")";
+        ctx.fillRect(offX + x * cellW, offY + y * cellH, cellW + 0.5, cellH + 0.5);
+      }
+    }
+  }
+  draw();
+  window.addEventListener("resize", draw);
+})();
+
 // Subtle monochrome ASCII background (asciiquarium-style water)
 (() => {
   const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
