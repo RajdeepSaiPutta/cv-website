@@ -370,6 +370,8 @@ html.js .reveal.is-in {
   scroll-behavior: smooth;
   scrollbar-width: none;
   padding-block-end: 1rem;
+  padding-inline-start: 3rem;
+  padding-inline-end: 3rem;
 }
 
 .certs-track::-webkit-scrollbar {
@@ -425,11 +427,11 @@ html.js .reveal.is-in {
 }
 
 .certs-arrow--prev {
-  inset-inline-start: -1.2rem;
+  inset-inline-start: 0.5rem;
 }
 
 .certs-arrow--next {
-  inset-inline-end: -1.2rem;
+  inset-inline-end: 0.5rem;
 }
 
 @media (max-width: 560px) {
@@ -743,6 +745,126 @@ html.js .reveal.is-in {
   .entry__shot:hover img {
     transform: none;
   }
+}
+
+  .entry__shot img,
+  .tag {
+    transition: none;
+  }
+
+  .entry__shot:hover img {
+    transform: none;
+  }
+}
+
+.projects-table {
+  max-inline-size: var(--max);
+  margin-inline: auto;
+  margin-block-start: 2rem;
+  overflow-x: auto;
+}
+
+.projects-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.projects-table th {
+  text-align: start;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  color: var(--text-faint);
+  border-block-end: 1px solid var(--border);
+}
+
+.projects-table td {
+  padding: 1rem;
+  border-block-end: 1px solid var(--border);
+  vertical-align: baseline;
+}
+
+.project-row {
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.project-row:not(.locked):hover {
+  background: var(--card);
+}
+
+.project-row.locked {
+  cursor: default;
+  opacity: 0.85;
+}
+
+.project-name {
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.project-name:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.project-status {
+  font-size: 0.8125rem;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.project-modal {
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+.project-modal::backdrop {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+  padding: 2rem 2rem 1.5rem;
+  max-width: 48rem;
+}
+
+.modal-content h3 {
+  font-size: 1.5rem;
+  margin-block: 0 0.75rem;
+  letter-spacing: -0.02em;
+}
+
+.modal-content p {
+  margin-block: 0 0.75rem;
+  color: var(--text-soft);
+}
+
+.modal-content a {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.modal-close {
+  position: absolute;
+  inset-block-start: 1rem;
+  inset-inline-end: 1rem;
+  background: none;
+  border: none;
+  color: var(--text-faint);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  line-height: 1;
+}
+
+.modal-close:hover {
+  color: var(--text);
 }
 
 [hidden] {

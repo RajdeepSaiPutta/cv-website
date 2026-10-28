@@ -57,59 +57,60 @@ const sites = [
 
 const grid = document.getElementById("grid");
 
-function card(site) {
-  const el = document.createElement("article");
-  el.className = "entry";
-
-  const isLocked = site.access === "private" && site.name !== "meridian madhapur mun";
-
-  const shot = document.createElement(isLocked ? "div" : "a");
-  shot.className = "entry__shot";
-  if (!isLocked) shot.href = site.url;
-  const img = document.createElement("img");
-  img.src = site.shot;
-  img.alt = "screenshot of " + site.name;
-  img.loading = "lazy";
-  const badge = document.createElement("span");
-  badge.className = "entry__badge entry__badge--" + site.access;
-  badge.textContent = site.access;
-  shot.append(img, badge);
-
-  const foot = document.createElement("div");
-  foot.className = "entry__foot";
-  const name = document.createElement(isLocked ? "span" : "a");
-  name.className = "entry__name";
-  if (!isLocked) name.href = site.url;
-  name.textContent = site.name;
-  const open = document.createElement(isLocked ? "span" : "a");
-  open.className = "entry__open";
-  if (!isLocked) open.href = site.url;
-  open.textContent = isLocked ? "private" : "open ↗";
-  foot.append(name, open);
-
-  const desc = document.createElement("p");
-  desc.className = "entry__desc";
-  desc.textContent = site.desc;
-
-  const meta = document.createElement("p");
-  meta.className = "entry__meta";
-  const code = document.createElement("code");
-  code.textContent = isLocked ? "private" : site.shown;
-  meta.append(code);
-
-  const tags = document.createElement("ul");
-  tags.className = "entry__tags";
-  for (const tag of site.tags) {
-    const li = document.createElement("li");
-    li.textContent = tag;
-    tags.append(li);
-  }
-
-  el.append(shot, foot, desc, meta, tags);
-  return el;
+function isLocked(site) {
+  return site.access === "private" && site.name !== "meridian madhapur mun";
 }
 
-for (const site of sites) grid.append(card(site));
+function row(site) {
+  const tr = document.createElement("tr");
+  tr.className = "project-row" + (isLocked(site) ? " locked" : "");
+
+  const tdName = document.createElement("td");
+  const nameLink = document.createElement(isLocked(site) ? "span" : "a");
+  nameLink.className = "project-name";
+  if (!isLocked(site)) nameLink.href = site.url;
+  nameLink.textContent = site.name;
+  tdName.appendChild(nameLink);
+
+  const tdDesc = document.createElement("td");
+  tdDesc.className = "project-desc";
+  tdDesc.textContent = site.desc;
+
+  const tdStatus = document.createElement("td");
+  tdStatus.className = "project-status";
+  tdStatus.textContent = site.access === "public" ? "Open source" : "Closed source";
+
+  tr.append(tdName, tdDesc, tdStatus);
+
+  if (!isLocked(site)) {
+    tr.addEventListener("click", () => openModal(site));
+  }
+
+  return tr;
+}
+
+function openModal(site) {
+  const modal = document.querySelector(".project-modal");
+  const content = document.querySelector(".modal-content");
+  const statusText = site.access === "public" ? "Open source" : "Closed source";
+  content.innerHTML = `
+    <h3>${site.name}</h3>
+    <p>${site.desc}</p>
+    <p><strong>Stack:</strong> ${site.tags.join(", ")}</p>
+    <p><strong>Status:</strong> ${statusText}</p>
+    ${site.access === "public" ? `<a href="${site.url}" target="_blank" rel="noopener">View project →</a>` : ""}
+  `;
+  modal.showModal();
+}
+
+const modalClose = document.querySelector(".modal-close");
+if (modalClose) {
+  modalClose.addEventListener("click", () => {
+    document.querySelector(".project-modal").close();
+  });
+}
+
+for (const site of sites) grid.append(row(site));
 
 // Cert slider arrows
 const track = document.querySelector(".certs-track");

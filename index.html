@@ -55,7 +55,7 @@
 
     <main>
       <section class="section section--experience reveal" aria-labelledby="experience-title">
-        <h2 class="section__title" id="experience-title">Work Experience.</h2>
+        <h2 class="section__title" id="experience-title">Work Experience</h2>
 
         <article class="job">
           <div class="job__head">
@@ -70,7 +70,7 @@
 
       <section class="section section--certs reveal" aria-labelledby="certifications-title">
         <h2 class="section__title section__title--certs" id="certifications-title">
-          <a class="section__link section__link--certs" href="certifications.html">Certifications.</a>
+          <a class="section__link section__link--certs" href="certifications.html">Certifications</a>
         </h2>
         <div class="certs-slider">
           <button class="certs-arrow certs-arrow--prev" aria-label="previous certificate">&#8249;</button>
@@ -135,17 +135,18 @@
       </section>
 
       <section class="skills reveal" aria-labelledby="skills-title">
-        <h2 class="skills__title" id="skills-title">Skills.</h2>
+        <h2 class="skills__title" id="skills-title">Skills</h2>
         <ul class="skills__list">
           <li>machine learning and deep learning (python, pytorch, polars)</li>
           <li>training from scratch (pytorch, hugging face, tokenizers)</li>
           <li>agentic engineering (mcp servers, tool calling, rag, agents, evals)</li>
+          <li>version control (git and github)</li>
           <li>bash and the rest of the shell (bash, zsh, sh, linux)</li>
         </ul>
       </section>
 
       <section class="section reveal" aria-labelledby="lecture-title">
-        <h2 class="section__title" id="lecture-title">Guest Lecture.</h2>
+        <h2 class="section__title" id="lecture-title">Guest Lecture</h2>
 
         <p class="section__intro">
           Gave a guest lecture about machine learning, agentic building, and operations.
@@ -162,8 +163,19 @@
       </section>
 
       <section class="projects reveal" aria-labelledby="projects-title">
-        <h2 class="section__title projects__title" id="projects-title">Projects.</h2>
-        <ul class="grid" id="grid"></ul>
+        <h2 class="section__title projects__title" id="projects-title">Projects</h2>
+        <div class="projects-table">
+          <table>
+            <thead>
+              <tr><th>Project</th><th>Description</th><th>Status</th></tr>
+            </thead>
+            <tbody id="grid"></tbody>
+          </table>
+        </div>
+        <dialog class="project-modal">
+          <button class="modal-close" aria-label="close">×</button>
+          <div class="modal-content"></div>
+        </dialog>
       </section>
     </main>
 
