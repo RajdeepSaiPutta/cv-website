@@ -4,7 +4,7 @@ const sites = [
     url: "https://meridianmadhapurmun.pages.dev",
     shown: "meridianmadhapurmun.pages.dev",
     shot: "assets/meridianmun.png",
-    access: "private",
+    access: "public",
     desc: "the site for the meridian madhapur mun conference. committees with background guides, registration with deadlines, and a spinning globe hero on the front page. it stayed up through registration week on cloudflare pages.",
     tags: ["web", "next.js", "react", "tailwind", "event"],
   },
@@ -118,6 +118,30 @@ for (const site of sites) {
 if (sites.length && grid.firstElementChild) {
   const firstLink = grid.querySelector("a");
   if (firstLink) selectSite(sites[0], firstLink);
+}
+
+// copy the email address to the clipboard
+const copyBtn = document.querySelector(".copy-email");
+if (copyBtn) {
+  copyBtn.addEventListener("click", async () => {
+    const email = copyBtn.dataset.email;
+    let ok = false;
+    try {
+      await navigator.clipboard.writeText(email);
+      ok = true;
+    } catch {
+      const ta = document.createElement("textarea");
+      ta.value = email;
+      document.body.appendChild(ta);
+      ta.select();
+      ok = document.execCommand("copy");
+      ta.remove();
+    }
+    copyBtn.textContent = ok ? "copied" : "copy";
+    setTimeout(() => {
+      copyBtn.textContent = "copy";
+    }, 1600);
+  });
 }
 
 // Cert slider arrows

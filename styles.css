@@ -60,6 +60,22 @@ ol {
 
 html {
   background: var(--bg);
+  scrollbar-color: #3a3d40 #1f2123;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background: #1f2123;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3a3d40;
+  border-radius: 5px;
+  border: 2px solid #1f2123;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4a4e52;
 }
 
 body {
@@ -99,32 +115,22 @@ button:focus-visible {
 
 /* —— ascii moon background (white salt desert moon) —— */
 
-.moon-bg {
-  position: fixed;
-  inset-block-start: 0;
-  inset-inline-start: 0;
-  block-size: 100vh;
-  inline-size: 100vw;
-  z-index: -2;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono",
-    monospace;
-  font-size: max(0.85vw, 3px);
-  line-height: 1;
-  letter-spacing: 0;
-  white-space: pre;
-  color: #e2e2e2;
-  opacity: 0.08;
-  pointer-events: none;
-  user-select: none;
+/* —— copy email —— */
+
+.copy-email {
+  background: none;
+  border: none;
+  padding: 0 0.25rem;
+  font: inherit;
+  font-size: 0.85em;
+  color: var(--text-faint);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .moon-bg {
-    opacity: 0.04;
-  }
+.copy-email:hover {
+  color: var(--text);
 }
 
 /* —— header —— */
@@ -448,8 +454,13 @@ html.js .reveal.is-in {
   cursor: pointer;
   display: grid;
   place-items: center;
+  padding: 0;
   opacity: 0.6;
   transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.certs-arrow svg {
+  display: block;
 }
 
 .certs-arrow:hover {
