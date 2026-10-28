@@ -60,22 +60,14 @@ ol {
 
 html {
   background: var(--bg);
-  scrollbar-color: #3a3d40 #1f2123;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
-  background: #1f2123;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #3a3d40;
-  border-radius: 5px;
-  border: 2px solid #1f2123;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #4a4e52;
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 body {
