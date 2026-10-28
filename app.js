@@ -111,7 +111,7 @@ for (const site of sites) {
   if (isLocked(site)) {
     a.style.pointerEvents = "none";
     a.style.opacity = "0.6";
-    a.style.color = var(--text-faint) || "inherit";
+    a.style.color = "#b8b8b8";
     a.style.textDecoration = "none";
   } else {
     a.addEventListener("click", (e) => {
