@@ -65,8 +65,8 @@ html {
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono",
+    monospace;
   font-size: 100%;
   line-height: 1.35;
   -webkit-font-smoothing: antialiased;
@@ -95,6 +95,36 @@ button:focus-visible {
   clip: rect(0 0 0 0);
   white-space: nowrap;
   border: 0;
+}
+
+/* —— ascii moon background (white salt desert moon) —— */
+
+.moon-bg {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  block-size: 100vh;
+  inline-size: 100vw;
+  z-index: -2;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono",
+    monospace;
+  font-size: max(0.85vw, 3px);
+  line-height: 1;
+  letter-spacing: 0;
+  white-space: pre;
+  color: #e2e2e2;
+  opacity: 0.08;
+  pointer-events: none;
+  user-select: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .moon-bg {
+    opacity: 0.04;
+  }
 }
 
 /* —— header —— */
@@ -748,16 +778,6 @@ html.js .reveal.is-in {
   }
 }
 
-  .entry__shot img,
-  .tag {
-    transition: none;
-  }
-
-  .entry__shot:hover img {
-    transform: none;
-  }
-}
-
 .projects-split {
   max-inline-size: var(--max);
   margin-inline: auto;
@@ -823,6 +843,15 @@ html.js .reveal.is-in {
   border-radius: 6px;
   background: var(--card);
   position: relative;
+}
+
+.detail-content[hidden] {
+  display: none;
+}
+
+.detail-tag {
+  margin-inline-end: 0.5rem;
+  color: var(--text-faint);
 }
 
 .detail-close {

@@ -79,7 +79,7 @@ function selectSite(site, linkEl) {
   detailName.textContent = site.name;
   detailStatus.textContent = site.access === "public" ? "Open source" : "Closed source";
   detailDesc.textContent = site.desc;
-  const tagsHtml = site.tags.map(t => `<span style="margin-right:0.5rem;color:var(--text-faint);">${t}</span>`).join("");
+  const tagsHtml = site.tags.map(t => `<span class="detail-tag">${t}</span>`).join("");
   detailStack.innerHTML = `<strong>Stack:</strong> ${tagsHtml}`;
 
   if (site.access === "public") {
@@ -90,12 +90,14 @@ function selectSite(site, linkEl) {
   }
 
   detailPlaceholder.style.display = "none";
-  detailContent.style.display = "block";
+  detailContent.hidden = false;
 }
 
 function closeDetail() {
-  detailPlaceholder.style.display = "block";
-  detailContent.style.display = "none";
+  const placeholder = document.querySelector(".detail-placeholder");
+  const detailContent = document.querySelector(".detail-content");
+  placeholder.style.display = "";
+  detailContent.hidden = true;
   document.querySelectorAll(".projects-list a").forEach(a => a.classList.remove("current"));
 }
 
