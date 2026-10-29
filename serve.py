@@ -23,7 +23,7 @@ HEADERS = [
     (
         "Content-Security-Policy",
         "default-src 'none'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; "
-        "script-src 'self' https://www.ascii-magic.com; base-uri 'none'; form-action 'none'; frame-ancestors 'none'",
+        "script-src 'self' 'unsafe-inline' https://www.ascii-magic.com; base-uri 'none'; form-action 'none'; frame-ancestors 'none'",
     ),
 ]
 
@@ -51,4 +51,4 @@ class Handler(SimpleHTTPRequestHandler):
 
 if __name__ == "__main__":
     print("serving %s on http://localhost:%d" % (ROOT, PORT), flush=True)
-    ThreadingHTTPServer(("127.0.0.1", PORT), Handler).serve_forever()
+    ThreadingHTTPServer(("0.0.0.0", PORT), Handler).serve_forever()

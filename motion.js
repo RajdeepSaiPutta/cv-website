@@ -41,41 +41,12 @@
     });
   }, 200);
 })();
-// night desert scene: a monochrome ascii piece (moon, dunes, horse) from
-// ascii-magic, scaled to cover the viewport at any aspect ratio
+// Reduced-motion: instantly reveal all content
 (() => {
-  const scene = document.querySelector("ascii-art.art-scene");
-  if (!scene) return;
-
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    scene.setAttribute("still", "true");
-    return;
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduced) {
+    document.documentElement.classList.add("motion-ready");
+    document.querySelectorAll(".reveal").forEach(el => el.classList.add("is-in"));
   }
-
-  function fit() {
-    const root = scene.shadowRoot;
-    if (!root) return;
-    const cv = root.querySelector("canvas") || root.querySelector("pre");
-    if (!cv) return;
-    if (cv.style.maxWidth !== "none") cv.style.maxWidth = "none";
-    const w = cv.offsetWidth;
-    const h = cv.offsetHeight;
-    if (!w || !h) return;
-    const wide = window.innerWidth / window.innerHeight >= 1.9;
-    let s;
-    if (wide) {
-      s = (window.innerWidth * 0.68) / w;
-      s = Math.max(0.9, Math.min(1.8, s));
-      scene.classList.add("framed");
-    } else {
-      s = Math.max(window.innerWidth / w, window.innerHeight / h) * 1.04;
-      scene.classList.remove("framed");
-    }
-    scene.style.transform = "translate(-50%, -50%) scale(" + s.toFixed(4) + ")";
-  }
-
-  window.addEventListener("resize", fit);
-  if (window.ResizeObserver) new ResizeObserver(fit).observe(scene);
-  for (const delay of [300, 900, 2000]) setTimeout(fit, delay);
 })();
 
