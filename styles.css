@@ -305,7 +305,6 @@ html.js .reveal.is-in {
   margin-inline: auto;
   padding: 2rem 1rem 0;
   border-block-start: 1px solid var(--border);
-  content-visibility: auto;
 }
 
 .section__title {
@@ -966,7 +965,9 @@ ascii-art.art-scene {
   top: 50%;
   z-index: -1;
   max-width: none;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
   color: #a3a8ac;
   opacity: 0.55;
   pointer-events: none;

@@ -5,7 +5,7 @@ const sites = [
     shown: "meridianmadhapurmun.pages.dev",
     shot: "assets/meridianmun.png",
     access: "public",
-    desc: "the site for the meridian madhapur mun conference. committees with background guides, registration with deadlines, and a spinning globe hero on the front page. it stayed up through registration week on cloudflare pages.",
+    desc: "conference site for the meridian madhapur mun conference. includes committee pages with downloadable background guides, registration forms with deadline tracking, and a 3d cinematic hero that plays on load. deployed to cloudflare pages and remained available throughout registration week.",
   },
   {
     name: "evaluator",
@@ -13,7 +13,7 @@ const sites = [
     shown: "github.com/RajdeepSaiPutta/evaluator-gui",
     shot: "assets/evaluator-gui.png",
     access: "private",
-    desc: "a desktop app that grades scanned answer sheets. it straightens and crops each answer, checks it against the marking scheme, and lists how each question was scored. tauri packs the whole thing into one executable.",
+    desc: "desktop application for grading scanned answer sheets. straightens and crops each page, aligns answers to a marking scheme, and scores every question with a written rationale. the teacher dashboard shows the class grade distribution and one-click moderation toward a target mean. packaged with tauri as a single executable for linux, windows, and macos.",
   },
   {
     name: "medvault",
@@ -21,7 +21,7 @@ const sites = [
     shown: "github.com/RajdeepSaiPutta/medvault",
     shot: "assets/medvault.png",
     access: "private",
-    desc: "keeps medical reports in one place. photograph a report and it reads the patient details, tests and results, then lines every visit up on a timeline with doctor's notes. ocr and parsing run on the server, so the phone app stays light.",
+    desc: "medical record repository. photograph a report and the system reads patient details, tests, and results with ocr, then arranges every visit on a chronological timeline alongside doctor's notes. parsing runs on the server so the phone client stays light.",
   },
   {
     name: "500m llm",
@@ -29,7 +29,7 @@ const sites = [
     shown: "huggingface.co/rajdeepp11/500mWithRAG-fromscratch",
     shot: "assets/500m-llm.png",
     access: "public",
-    desc: "a 500 million parameter model trained from scratch on an rtx 5070. i wrote the bpe tokenizer, the fineweb-edu pipeline with dedup and quality filters, the mixed-precision training loop and the cosine schedule. a small rag chat runs on top of the trained weights.",
+    desc: "five-hundred-million parameter language model trained from scratch on an rtx 5070. i wrote the byte-pair-encoding tokenizer, the fineweb-edu ingestion pipeline with deduplication and quality filters, the mixed-precision training loop, and the cosine learning-rate schedule. a small retrieval-augmented chat interface runs on top of the trained weights.",
   },
   {
     name: "voicr",
@@ -37,7 +37,7 @@ const sites = [
     shown: "github.com/RajdeepSaiPutta/voicr",
     shot: "assets/voicr.png",
     access: "public",
-    desc: "a voice assistant that lives in the browser. it streams mic audio over websockets, transcribes it with whisper, answers with a small llm that can search the web and keep notes, and speaks the reply back. it holds a conversation without you watching a spinner.",
+    desc: "browser-based voice assistant. streams microphone audio over websockets, transcribes speech with whisper, answers with a small language model that can search the web and keep notes, and speaks the reply back. holds a conversation without loading spinners.",
   },
   {
     name: "mako",
@@ -45,7 +45,7 @@ const sites = [
     shown: "github.com/RajdeepSaiPutta/mako",
     shot: "assets/mako.png",
     access: "public",
-    desc: "feed it a link or a pdf and it researches the company, drafts an article, then scores its own seo with a rubric before handing the doc back. it was my first multi-step agent program.",
+    desc: "multi-step research agent. feeds it a link or pdf and it researches the company, drafts an article, scores its own seo with a rubric, and returns the document. my first multi-step agent program.",
   },
 ];
 
