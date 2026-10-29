@@ -952,8 +952,8 @@ ascii-art.art-scene {
   z-index: -1;
   max-width: none;
   transform: translate(-50%, -50%);
-  color: #43474b;
-  opacity: 0.55;
+  color: #a3a8ac;
+  opacity: 0.85;
   pointer-events: none;
   user-select: none;
 }
