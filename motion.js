@@ -11,49 +11,32 @@
     if (caret) caret.classList.add("is-done");
   }
 
-  if (reduced) {
+  if (reduced || !name) {
     revealAll();
     return;
   }
 
-  if (!name) {
-    root.classList.add("motion-ready");
-    setTimeout(() => {
-      reveals.forEach((el, index) => {
-        setTimeout(() => el.classList.add("is-in"), index * 45);
-      });
-    }, 80);
-    return;
-  }
-
   const full = name.dataset.type;
-  name.textContent = "";
+  name.textContent = full;
   root.classList.add("motion-ready");
 
-  // if anything goes wrong mid-type, show the page instead of leaving it blank
-  const failsafe = setTimeout(revealAll, 4000);
+  // simple left-to-right fade
+  name.style.opacity = "0";
+  name.style.transform = "translateX(-2rem)";
+  name.style.transition = "opacity 600ms ease, transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1)";
 
-  let index = 0;
+  requestAnimationFrame(() => {
+    name.style.opacity = "1";
+    name.style.transform = "none";
+  });
 
-  function type() {
-    name.textContent = full.slice(0, ++index);
+  if (caret) caret.classList.add("is-done");
 
-    if (index < full.length) {
-      setTimeout(type, full[index - 1] === " " ? 110 : 68);
-      return;
-    }
-
-    clearTimeout(failsafe);
-    if (caret) caret.classList.add("is-done");
-
-    setTimeout(() => {
-      reveals.forEach((el, i) => {
-        setTimeout(() => el.classList.add("is-in"), i * 70);
-      });
-    }, 200);
-  }
-
-  setTimeout(type, 260);
+  setTimeout(() => {
+    reveals.forEach((el, i) => {
+      setTimeout(() => el.classList.add("is-in"), i * 70);
+    });
+  }, 300);
 })();
 // night desert scene: a monochrome ascii piece (moon, dunes, horse) from
 // ascii-magic, scaled to cover the viewport at any aspect ratio

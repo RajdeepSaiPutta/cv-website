@@ -845,7 +845,6 @@ html.js .reveal.is-in {
   margin-inline-end: 0.5rem;
   color: var(--text-faint);
 }
-
 .detail-close {
   position: absolute;
   inset-block-start: 0.75rem;
@@ -982,4 +981,15 @@ ascii-art.art-scene {
 
 .lightbox__close:hover {
   border-color: var(--name-red);
+}
+
+/* —— project detail shot —— */
+
+.detail-shot {
+  display: block;
+  inline-size: 100%;
+  margin-block-end: 1.25rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--card);
 }
