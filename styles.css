@@ -396,9 +396,9 @@ html.js .reveal.is-in {
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
-  inline-size: 20rem;
-  min-inline-size: 16rem;
-  block-size: 28rem;
+  inline-size: 28rem;
+  min-inline-size: 22rem;
+  block-size: 18rem;
   border: 1px solid var(--border);
   border-radius: 6px;
   overflow: hidden;
@@ -455,8 +455,9 @@ html.js .reveal.is-in {
     display: none;
   }
   .cert--thumb {
-    inline-size: 15rem;
-    min-inline-size: 12rem;
+    inline-size: 22rem;
+    min-inline-size: 18rem;
+    block-size: 14rem;
   }
 }
 
