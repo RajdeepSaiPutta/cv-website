@@ -5,7 +5,7 @@ const sites = [
     shown: "meridianmadhapurmun.pages.dev",
     shot: "assets/meridianmun.png",
     access: "public",
-    desc: "Conference site for the Meridian Madhapur MUN conference. Includes committee pages with downloadable background guides, registration forms with deadline tracking, and a 3D cinematic hero that plays on load. Deployed to Cloudflare Pages and remained available throughout registration week.",
+    desc: "A complete conference platform built for the Meridian Madhapur MUN 2026. Committee pages carry downloadable background guides and agenda material, the registration system tracks delegate details and payment deadlines, and a 3D cinematic hero plays while the page loads. The site carried registration week: it processed over five hundred delegate registrations and stayed available throughout. Hosted on Cloudflare Pages.",
   },
   {
     name: "Evaluator",
@@ -13,7 +13,7 @@ const sites = [
     shown: "github.com/RajdeepSaiPutta/evaluator-gui",
     shot: "assets/evaluator-gui.png",
     access: "private",
-    desc: "Desktop application for grading scanned answer sheets. Straightens and crops each page, aligns answers to a marking scheme, and scores every question with a written rationale. The teacher dashboard shows the class grade distribution and one-click moderation toward a target mean. Packaged with Tauri as a single executable for Linux, Windows, and macOS.",
+    desc: "A desktop application that grades scanned answer sheets end to end. It detects the page, straightens skew, and crops each answer region into alignment with the marking scheme; a language model then scores every answer and writes the rationale for that score. Grading runs on a small model installed on the machine itself, so a full batch of sheets can be scored offline. A teacher dashboard adds class-level analysis: grade distribution, per-question breakdowns, and a moderation control that moves the class mean toward a target without touching individual answers. Packaged with Tauri as a single executable for Linux, Windows, and macOS.",
   },
   {
     name: "MedVault",
@@ -21,7 +21,7 @@ const sites = [
     shown: "github.com/RajdeepSaiPutta/medvault",
     shot: "assets/medvault.png",
     access: "private",
-    desc: "Medical record repository. Photograph a report and the system reads patient details, tests, and results with OCR, then arranges every visit on a chronological timeline alongside doctor's notes. Parsing runs on the server so the phone client stays light.",
+    desc: "A vault for medical records. Photograph a report and the app reads the patient details, test names, and results with OCR, turns them into a structured record, and files the report under the correct visit. Every report also gets LLM-written summaries and explanations in plain language, and an explanation screen discusses the reports directly: what a value means and how it compares to the previous visit. Visits line up on a chronological timeline next to doctor's notes, so a full history can be read top to bottom. The file parsing runs on the server, so the phone client stays light.",
   },
   {
     name: "500M LLM",
@@ -29,7 +29,7 @@ const sites = [
     shown: "huggingface.co/rajdeepp11/500mWithRAG-fromscratch",
     shot: "assets/500m-llm.png",
     access: "public",
-    desc: "Five-hundred-million parameter language model trained from scratch on an RTX 5070. I wrote the byte-pair-encoding tokenizer, the FineWeb-edu ingestion pipeline with deduplication and quality filters, the mixed-precision training loop, and the cosine learning-rate schedule. A small retrieval-augmented chat interface runs on top of the trained weights.",
+    desc: "A five-hundred-million parameter language model trained completely from scratch on a single RTX 5070. Everything around the model was written by hand: the byte-pair-encoding tokenizer trained on the corpus, the FineWeb-Edu ingestion pipeline with deduplication and quality filtering, the mixed-precision training loop, and the cosine learning-rate schedule. On top of the trained weights sits a retrieval-augmented chat interface, which pulls relevant document chunks and feeds them to the model so answers stay grounded in the sources. The whole pipeline, from raw web text to a working chat product, runs from code I wrote.",
   },
   {
     name: "Voicr",
@@ -37,7 +37,7 @@ const sites = [
     shown: "github.com/RajdeepSaiPutta/voicr",
     shot: "assets/voicr.png",
     access: "public",
-    desc: "Browser-based voice assistant. Streams microphone audio over WebSockets, transcribes speech with Whisper, answers with a small language model that can search the web and keep notes, and speaks the reply back. Holds a conversation without loading spinners.",
+    desc: "A browser-based voice assistant. Microphone audio streams over a WebSocket to the server, where Whisper transcribes the speech. A small language model composes the reply and can use tools mid-conversation, searching the web when it needs facts and keeping notes across turns. The answer streams back and is spoken through text-to-speech, with transcription, reasoning, and synthesis arranged so that no stage blocks the next. The result is a conversation you can hold out loud without ever watching a loading spinner.",
   },
   {
     name: "Mako",
@@ -45,7 +45,7 @@ const sites = [
     shown: "github.com/RajdeepSaiPutta/mako",
     shot: "assets/mako.png",
     access: "public",
-    desc: "Multi-step research agent. Feed it a link or PDF and it researches the company, drafts an article, scores its own SEO with a rubric, and returns the document. My first multi-step agent program.",
+    desc: "A multi-step research agent. Give it a company link or a PDF and it works in stages: it researches the company from the source document, expands with further web research, drafts a full article from the findings, then scores its own draft against a SEO rubric and returns the finished document. Every stage runs through explicit hand-offs rather than one large prompt, so the research can be inspected and the drafting can be rerun without redoing it. It was my first proper multi-step agent program.",
   },
 ];
 
@@ -123,5 +123,40 @@ if (track && prevBtn && nextBtn) {
   });
   nextBtn.addEventListener("click", () => {
     track.scrollBy({ left: step, behavior: "smooth" });
+  });
+}
+
+// certificate lightbox: expand in place, never navigate away
+const lightbox = document.querySelector(".lightbox");
+if (lightbox) {
+  const lbImg = lightbox.querySelector(".lightbox__img");
+
+  function openLightbox(src, alt) {
+    lbImg.src = src;
+    lbImg.alt = alt || "certificate";
+    lightbox.hidden = false;
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeLightbox() {
+    lightbox.hidden = true;
+    lbImg.src = "";
+    document.body.style.overflow = "";
+  }
+
+  document.querySelectorAll(".cert--thumb a").forEach(a => {
+    a.addEventListener("click", e => {
+      e.preventDefault();
+      const img = a.querySelector("img");
+      openLightbox(img.src, img.alt);
+    });
+  });
+
+  lightbox.querySelector(".lightbox__close").addEventListener("click", closeLightbox);
+  lightbox.addEventListener("click", e => {
+    if (e.target === lightbox) closeLightbox();
+  });
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape" && !lightbox.hidden) closeLightbox();
   });
 }

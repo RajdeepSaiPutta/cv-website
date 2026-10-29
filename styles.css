@@ -940,3 +940,46 @@ ascii-art.art-scene {
   pointer-events: none;
   user-select: none;
 }
+
+/* —— certificate lightbox —— */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(12, 12, 13, 0.92);
+  padding: 3rem 1rem;
+}
+
+.lightbox[hidden] {
+  display: none;
+}
+
+.lightbox__img {
+  max-inline-size: min(92vw, 60rem);
+  max-block-size: 88vh;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+}
+
+.lightbox__close {
+  position: absolute;
+  inset-block-start: 1rem;
+  inset-inline-end: 1.25rem;
+  inline-size: 2.5rem;
+  block-size: 2.5rem;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.lightbox__close:hover {
+  border-color: var(--name-red);
+}
