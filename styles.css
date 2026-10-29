@@ -187,8 +187,8 @@ html.js .reveal.is-in {
   opacity: 1;
   transform: none;
   transition:
-    opacity 520ms ease,
-    transform 520ms cubic-bezier(0.2, 0.7, 0.2, 1);
+    opacity 440ms ease,
+    transform 440ms cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 .wordmark em {
@@ -305,6 +305,7 @@ html.js .reveal.is-in {
   margin-inline: auto;
   padding: 2rem 1rem 0;
   border-block-start: 1px solid var(--border);
+  content-visibility: auto;
 }
 
 .section__title {
@@ -958,25 +959,16 @@ ascii-art.art-scene {
   user-select: none;
 }
 
-/* ultrawide framing: the piece is centered at about two-thirds of the
-   viewport width (motion.js), so all four edges fall inside the viewport;
-   a soft elliptical vignette fades them into the page background instead
-   of showing a hard canvas cut */
-ascii-art.art-scene.framed {
-  -webkit-mask-image: radial-gradient(
-    ellipse 60% 110% at 50% 50%,
-    #000 62%,
-    transparent 100%
-  );
-  mask-image: radial-gradient(
-    ellipse 60% 110% at 50% 50%,
-    #000 62%,
-    transparent 100%
-  );
-}
-
-/* keep copy readable over the bright dots: a shadow in the page background
-   color, so it never shows as a tint on plain --bg, only eats the dots */
-body {
-  text-shadow: 0 1px 3px rgba(31, 33, 35, 0.9), 0 0 12px rgba(31, 33, 35, 0.65);
+/* keep copy readable over the bright dots */
+ascii-art.art-scene {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: -1;
+  max-width: none;
+  transform: translate(-50%, -50%);
+  color: #a3a8ac;
+  opacity: 0.55;
+  pointer-events: none;
+  user-select: none;
 }

@@ -6,7 +6,6 @@ const sites = [
     shot: "assets/meridianmun.png",
     access: "public",
     desc: "the site for the meridian madhapur mun conference. committees with background guides, registration with deadlines, and a spinning globe hero on the front page. it stayed up through registration week on cloudflare pages.",
-    tags: ["web", "next.js", "react", "tailwind", "event"],
   },
   {
     name: "evaluator",
@@ -15,7 +14,6 @@ const sites = [
     shot: "assets/evaluator-gui.png",
     access: "private",
     desc: "a desktop app that grades scanned answer sheets. it straightens and crops each answer, checks it against the marking scheme, and lists how each question was scored. tauri packs the whole thing into one executable.",
-    tags: ["desktop", "react", "tauri", "ai"],
   },
   {
     name: "medvault",
@@ -24,7 +22,6 @@ const sites = [
     shot: "assets/medvault.png",
     access: "private",
     desc: "keeps medical reports in one place. photograph a report and it reads the patient details, tests and results, then lines every visit up on a timeline with doctor's notes. ocr and parsing run on the server, so the phone app stays light.",
-    tags: ["mobile", "react native", "expo", "supabase", "ai"],
   },
   {
     name: "500m llm",
@@ -33,7 +30,6 @@ const sites = [
     shot: "assets/500m-llm.png",
     access: "public",
     desc: "a 500 million parameter model trained from scratch on an rtx 5070. i wrote the bpe tokenizer, the fineweb-edu pipeline with dedup and quality filters, the mixed-precision training loop and the cosine schedule. a small rag chat runs on top of the trained weights.",
-    tags: ["python", "pytorch", "llm", "ai"],
   },
   {
     name: "voicr",
@@ -42,7 +38,6 @@ const sites = [
     shot: "assets/voicr.png",
     access: "public",
     desc: "a voice assistant that lives in the browser. it streams mic audio over websockets, transcribes it with whisper, answers with a small llm that can search the web and keep notes, and speaks the reply back. it holds a conversation without you watching a spinner.",
-    tags: ["python", "ai", "audio", "websockets", "groq"],
   },
   {
     name: "mako",
@@ -51,7 +46,6 @@ const sites = [
     shot: "assets/mako.png",
     access: "public",
     desc: "feed it a link or a pdf and it researches the company, drafts an article, then scores its own seo with a rubric before handing the doc back. it was my first multi-step agent program.",
-    tags: ["python", "ai", "web", "groq"],
   },
 ];
 
@@ -59,7 +53,6 @@ const grid = document.getElementById("grid");
 const detailName = document.querySelector(".detail-name");
 const detailStatus = document.querySelector(".detail-status");
 const detailDesc = document.querySelector(".detail-desc");
-const detailStack = document.querySelector(".detail-stack");
 const detailLink = document.querySelector(".detail-link");
 const detailContent = document.querySelector(".detail-content");
 const detailPlaceholder = document.querySelector(".detail-placeholder");
@@ -75,8 +68,6 @@ function selectSite(site, linkEl) {
   detailName.textContent = site.name;
   detailStatus.textContent = site.access === "public" ? "public repo" : "private repo";
   detailDesc.textContent = site.desc;
-  const tagsHtml = site.tags.map(t => `<span class="detail-tag">${t}</span>`).join("");
-  detailStack.innerHTML = `<strong>Stack:</strong> ${tagsHtml}`;
 
   if (site.access === "public") {
     detailLink.href = site.url;

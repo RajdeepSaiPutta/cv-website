@@ -48,7 +48,7 @@
 
     setTimeout(() => {
       reveals.forEach((el, i) => {
-        setTimeout(() => el.classList.add("is-in"), i * 45);
+        setTimeout(() => el.classList.add("is-in"), i * 70);
       });
     }, 200);
   }
