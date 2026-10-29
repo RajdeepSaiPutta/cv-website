@@ -98,6 +98,6 @@
   window.addEventListener("resize", fit);
   if (window.ResizeObserver) new ResizeObserver(fit).observe(scene);
   // the piece loads and draws asynchronously; retry until the pre has size
-  for (const delay of [300, 900, 2000, 4000, 7000]) setTimeout(fit, delay);
+  for (const delay of [300, 900, 2000]) setTimeout(fit, delay);
 })();
 

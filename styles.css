@@ -298,6 +298,28 @@ html.js .reveal.is-in {
   color: var(--text-faint);
 }
 
+.certs__list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+  max-inline-size: 46rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--text-soft);
+}
+
+.certs__list li {
+  margin-block: 0.35rem;
+  padding-inline-start: 1.2rem;
+  text-indent: -1.2rem;
+}
+
+.certs__list li::before {
+  content: "–";
+  color: var(--text-faint);
+  margin-inline-end: 0.5rem;
+}
+
 /* —— work experience, certifications, guest lecture —— */
 
 .section {
@@ -951,25 +973,10 @@ ascii-art.art-scene {
   top: 50%;
   z-index: -1;
   max-width: none;
-  transform: translate(-50%, -50%);
-  color: #a3a8ac;
-  opacity: 0.85;
-  pointer-events: none;
-  user-select: none;
-}
-
-/* keep copy readable over the bright dots */
-ascii-art.art-scene {
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  z-index: -1;
-  max-width: none;
   transform: translate(-50%, -50%) translateZ(0);
-  will-change: transform;
   backface-visibility: hidden;
   color: #a3a8ac;
-  opacity: 0.35;
+  opacity: 0.15;
   pointer-events: none;
   user-select: none;
 }
