@@ -77,8 +77,21 @@
     const w = cv.offsetWidth;
     const h = cv.offsetHeight;
     if (!w || !h) return;
-    // cover: grow until both dimensions clear the viewport, centered
-    const s = Math.max(window.innerWidth / w, window.innerHeight / h) * 1.04;
+    // cover: grow until both dimensions clear the viewport, centered.
+    // on ultrawide panels (~2.4:1) that width-driven scale blows the glyphs
+    // up huge; there we show the piece at about two-thirds of the viewport
+    // width, centered, and fade all four edges into the page background
+    // (.framed below) instead of stretching it across the screen
+    const wide = window.innerWidth / window.innerHeight >= 1.9;
+    let s;
+    if (wide) {
+      s = (window.innerWidth * 0.68) / w;
+      s = Math.max(0.9, Math.min(1.8, s));
+      scene.classList.add("framed");
+    } else {
+      s = Math.max(window.innerWidth / w, window.innerHeight / h) * 1.04;
+      scene.classList.remove("framed");
+    }
     scene.style.transform = "translate(-50%, -50%) scale(" + s.toFixed(4) + ")";
   }
 

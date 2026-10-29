@@ -957,3 +957,26 @@ ascii-art.art-scene {
   pointer-events: none;
   user-select: none;
 }
+
+/* ultrawide framing: the piece is centered at about two-thirds of the
+   viewport width (motion.js), so all four edges fall inside the viewport;
+   a soft elliptical vignette fades them into the page background instead
+   of showing a hard canvas cut */
+ascii-art.art-scene.framed {
+  -webkit-mask-image: radial-gradient(
+    ellipse 60% 110% at 50% 50%,
+    #000 62%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 60% 110% at 50% 50%,
+    #000 62%,
+    transparent 100%
+  );
+}
+
+/* keep copy readable over the bright dots: a shadow in the page background
+   color, so it never shows as a tint on plain --bg, only eats the dots */
+body {
+  text-shadow: 0 1px 3px rgba(31, 33, 35, 0.9), 0 0 12px rgba(31, 33, 35, 0.65);
+}
