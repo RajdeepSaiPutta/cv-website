@@ -753,6 +753,13 @@ html.js .reveal.is-in {
   text-underline-offset: 3px;
 }
 
+.colophon {
+  margin-block-start: 0.35rem;
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  opacity: 0.75;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html.js .wordmark__text {
     opacity: 1;
