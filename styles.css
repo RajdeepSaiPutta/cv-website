@@ -969,7 +969,7 @@ ascii-art.art-scene {
   will-change: transform;
   backface-visibility: hidden;
   color: #a3a8ac;
-  opacity: 0.55;
+  opacity: 0.35;
   pointer-events: none;
   user-select: none;
 }
