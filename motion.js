@@ -20,10 +20,13 @@
   name.textContent = full;
   root.classList.add("motion-ready");
 
-  // simple left-to-right fade
+  // simple left-to-right fade - force reflow before animation
   name.style.opacity = "0";
   name.style.transform = "translateX(-2rem)";
-  name.style.transition = "opacity 600ms ease, transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1)";
+  name.style.transition = "opacity 400ms ease, transform 400ms cubic-bezier(0.2, 0.7, 0.2, 1)";
+
+  // Force reflow to ensure initial state is rendered
+  name.offsetHeight;
 
   requestAnimationFrame(() => {
     name.style.opacity = "1";
@@ -34,9 +37,9 @@
 
   setTimeout(() => {
     reveals.forEach((el, i) => {
-      setTimeout(() => el.classList.add("is-in"), i * 70);
+      setTimeout(() => el.classList.add("is-in"), i * 50);
     });
-  }, 300);
+  }, 200);
 })();
 // night desert scene: a monochrome ascii piece (moon, dunes, horse) from
 // ascii-magic, scaled to cover the viewport at any aspect ratio
