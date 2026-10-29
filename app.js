@@ -1,19 +1,19 @@
 const sites = [
   {
-    name: "MUN website",
-    url: "https://meridianmadhapurmun.pages.dev",
-    shown: "meridianmadhapurmun.pages.dev",
-    shot: "assets/meridianmun.png",
-    access: "public",
-    desc: "A complete conference platform built for the Meridian Madhapur MUN 2026. Committee pages carry downloadable background guides and agenda material, the registration system tracks delegate details and payment deadlines, and a 3D cinematic hero plays while the page loads. The site carried registration week: it processed over five hundred delegate registrations and stayed available throughout. Hosted on Cloudflare Pages.",
-  },
-  {
     name: "Evaluator",
     url: "https://github.com/RajdeepSaiPutta/evaluator-gui",
     shown: "github.com/RajdeepSaiPutta/evaluator-gui",
     shot: "assets/evaluator-gui.png",
     access: "private",
     desc: "A desktop application that grades scanned answer sheets end to end. It detects the page, straightens skew, and crops each answer region into alignment with the marking scheme; a language model then scores every answer and writes the rationale for that score. Grading runs on a small model installed on the machine itself, so a full batch of sheets can be scored offline. A teacher dashboard adds class-level analysis: grade distribution, per-question breakdowns, and a moderation control that moves the class mean toward a target without touching individual answers. Packaged with Tauri as a single executable for Linux, Windows, and macOS.",
+  },
+  {
+    name: "500M LLM",
+    url: "https://huggingface.co/rajdeepp11/500mWithRAG-fromscratch/tree/main",
+    shown: "huggingface.co/rajdeepp11/500mWithRAG-fromscratch",
+    shot: "assets/500m-llm.png",
+    access: "public",
+    desc: "A five-hundred-million parameter language model trained completely from scratch on a single RTX 5070. Everything around the model was written by hand: the byte-pair-encoding tokenizer trained on the corpus, the FineWeb-Edu ingestion pipeline with deduplication and quality filtering, the mixed-precision training loop, and the cosine learning-rate schedule. On top of the trained weights sits a retrieval-augmented chat interface, which pulls relevant document chunks and feeds them to the model so answers stay grounded in the sources. The whole pipeline, from raw web text to a working chat product, runs from code I wrote.",
   },
   {
     name: "MedVault",
@@ -24,12 +24,12 @@ const sites = [
     desc: "A vault for medical records. Photograph a report and the app reads the patient details, test names, and results with OCR, turns them into a structured record, and files the report under the correct visit. Every report also gets LLM-written summaries and explanations in plain language, and an explanation screen discusses the reports directly: what a value means and how it compares to the previous visit. Visits line up on a chronological timeline next to doctor's notes, so a full history can be read top to bottom. The file parsing runs on the server, so the phone client stays light.",
   },
   {
-    name: "500M LLM",
-    url: "https://huggingface.co/rajdeepp11/500mWithRAG-fromscratch/tree/main",
-    shown: "huggingface.co/rajdeepp11/500mWithRAG-fromscratch",
-    shot: "assets/500m-llm.png",
+    name: "MerMUN website",
+    url: "https://meridianmadhapurmun.pages.dev",
+    shown: "meridianmadhapurmun.pages.dev",
+    shot: "assets/meridianmun.png",
     access: "public",
-    desc: "A five-hundred-million parameter language model trained completely from scratch on a single RTX 5070. Everything around the model was written by hand: the byte-pair-encoding tokenizer trained on the corpus, the FineWeb-Edu ingestion pipeline with deduplication and quality filtering, the mixed-precision training loop, and the cosine learning-rate schedule. On top of the trained weights sits a retrieval-augmented chat interface, which pulls relevant document chunks and feeds them to the model so answers stay grounded in the sources. The whole pipeline, from raw web text to a working chat product, runs from code I wrote.",
+    desc: "A complete conference platform built for the Meridian Madhapur MUN 2026. Committee pages carry downloadable background guides and agenda material, the registration system tracks delegate details and payment deadlines, and a 3D cinematic hero plays while the page loads. The site carried registration week: it processed over five hundred delegate registrations and stayed available throughout. Hosted on Cloudflare Pages.",
   },
   {
     name: "Voicr",
