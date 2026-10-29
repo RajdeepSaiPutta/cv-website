@@ -49,25 +49,25 @@
 
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     scene.setAttribute("still", "");
+    return;
+  }
+
+  let pauseCount = 0;
+  function setPaused(paused) {
+    pauseCount += paused ? 1 : -1;
+    if (pauseCount > 0) scene.setAttribute("still", "");
+    else scene.removeAttribute("still");
   }
 
   function fit() {
     const root = scene.shadowRoot;
     if (!root) return;
-    // the player paints into a canvas next to the pre; the pre is empty
     const cv = root.querySelector("canvas") || root.querySelector("pre");
     if (!cv) return;
-    // the player caps the canvas at 100% host width; a cover-fit background
-    // needs the natural pixel size, so release the cap once
     if (cv.style.maxWidth !== "none") cv.style.maxWidth = "none";
     const w = cv.offsetWidth;
     const h = cv.offsetHeight;
     if (!w || !h) return;
-    // cover: grow until both dimensions clear the viewport, centered.
-    // on ultrawide panels (~2.4:1) that width-driven scale blows the glyphs
-    // up huge; there we show the piece at about two-thirds of the viewport
-    // width, centered, and fade all four edges into the page background
-    // (.framed below) instead of stretching it across the screen
     const wide = window.innerWidth / window.innerHeight >= 1.9;
     let s;
     if (wide) {
@@ -81,9 +81,43 @@
     scene.style.transform = "translate(-50%, -50%) scale(" + s.toFixed(4) + ")";
   }
 
+  // Pause animation during interactions to eliminate lag
+  const projectList = document.querySelector(".projects-list");
+  const detailContent = document.querySelector(".detail-content");
+  const lightbox = document.querySelector(".lightbox");
+  const certTrack = document.querySelector(".certs-track");
+
+  function checkPause() {
+    const hoveringProject = projectList && projectList.matches(":hover");
+    const detailOpen = detailContent && !detailContent.hidden;
+    const lightboxOpen = lightbox && !lightbox.hidden;
+    const hoveringCerts = certTrack && certTrack.matches(":hover");
+    setPaused(hoveringProject || detailOpen || lightboxOpen || hoveringCerts);
+  }
+
+  // Check on hover events
+  [projectList, certTrack].forEach(el => {
+    if (el) {
+      el.addEventListener("mouseenter", checkPause);
+      el.addEventListener("mouseleave", checkPause);
+    }
+  });
+
+  // Check on detail panel open/close
+  const observer = new MutationObserver(checkPause);
+  if (detailContent) observer.observe(detailContent, { attributes: true, attributeFilter: ["hidden"] });
+  if (lightbox) observer.observe(lightbox, { attributes: true, attributeFilter: ["hidden"] });
+
+  // Also pause during scroll
+  let scrollTimer;
+  window.addEventListener("scroll", () => {
+    setPaused(true);
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(() => setPaused(false), 150);
+  }, { passive: true });
+
   window.addEventListener("resize", fit);
   if (window.ResizeObserver) new ResizeObserver(fit).observe(scene);
-  // the piece loads and draws asynchronously; retry until the pre has size
   for (const delay of [300, 900, 2000]) setTimeout(fit, delay);
 })();
 

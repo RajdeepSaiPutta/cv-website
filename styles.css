@@ -396,9 +396,9 @@ html.js .reveal.is-in {
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
-  inline-size: 28rem;
-  min-inline-size: 22rem;
-  block-size: 18rem;
+  inline-size: 18rem;
+  min-inline-size: 14rem;
+  block-size: 28rem;
   border: 1px solid var(--border);
   border-radius: 6px;
   overflow: hidden;
@@ -455,9 +455,9 @@ html.js .reveal.is-in {
     display: none;
   }
   .cert--thumb {
-    inline-size: 22rem;
-    min-inline-size: 18rem;
-    block-size: 14rem;
+    inline-size: 14rem;
+    min-inline-size: 12rem;
+    block-size: 22rem;
   }
 }
 
@@ -936,7 +936,7 @@ ascii-art.art-scene {
   transform: translate(-50%, -50%) translateZ(0);
   backface-visibility: hidden;
   color: #a3a8ac;
-  opacity: 0.15;
+  opacity: 0.25;
   pointer-events: none;
   user-select: none;
 }
