@@ -48,15 +48,8 @@
   if (!scene) return;
 
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    scene.setAttribute("still", "");
+    scene.setAttribute("still", "true");
     return;
-  }
-
-  let pauseCount = 0;
-  function setPaused(paused) {
-    pauseCount += paused ? 1 : -1;
-    if (pauseCount > 0) scene.setAttribute("still", "");
-    else scene.removeAttribute("still");
   }
 
   function fit() {
@@ -80,41 +73,6 @@
     }
     scene.style.transform = "translate(-50%, -50%) scale(" + s.toFixed(4) + ")";
   }
-
-  // Pause animation during interactions to eliminate lag
-  const projectList = document.querySelector(".projects-list");
-  const detailContent = document.querySelector(".detail-content");
-  const lightbox = document.querySelector(".lightbox");
-  const certTrack = document.querySelector(".certs-track");
-
-  function checkPause() {
-    const hoveringProject = projectList && projectList.matches(":hover");
-    const detailOpen = detailContent && !detailContent.hidden;
-    const lightboxOpen = lightbox && !lightbox.hidden;
-    const hoveringCerts = certTrack && certTrack.matches(":hover");
-    setPaused(hoveringProject || detailOpen || lightboxOpen || hoveringCerts);
-  }
-
-  // Check on hover events
-  [projectList, certTrack].forEach(el => {
-    if (el) {
-      el.addEventListener("mouseenter", checkPause);
-      el.addEventListener("mouseleave", checkPause);
-    }
-  });
-
-  // Check on detail panel open/close
-  const observer = new MutationObserver(checkPause);
-  if (detailContent) observer.observe(detailContent, { attributes: true, attributeFilter: ["hidden"] });
-  if (lightbox) observer.observe(lightbox, { attributes: true, attributeFilter: ["hidden"] });
-
-  // Also pause during scroll
-  let scrollTimer;
-  window.addEventListener("scroll", () => {
-    setPaused(true);
-    clearTimeout(scrollTimer);
-    scrollTimer = setTimeout(() => setPaused(false), 150);
-  }, { passive: true });
 
   window.addEventListener("resize", fit);
   if (window.ResizeObserver) new ResizeObserver(fit).observe(scene);
