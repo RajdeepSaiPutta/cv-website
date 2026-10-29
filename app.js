@@ -111,30 +111,6 @@ if (sites.length && grid.firstElementChild) {
   if (firstLink) selectSite(sites[0], firstLink);
 }
 
-// copy the email address to the clipboard
-const copyBtn = document.querySelector(".copy-email");
-if (copyBtn) {
-  copyBtn.addEventListener("click", async () => {
-    const email = copyBtn.dataset.email;
-    let ok = false;
-    try {
-      await navigator.clipboard.writeText(email);
-      ok = true;
-    } catch {
-      const ta = document.createElement("textarea");
-      ta.value = email;
-      document.body.appendChild(ta);
-      ta.select();
-      ok = document.execCommand("copy");
-      ta.remove();
-    }
-    copyBtn.textContent = ok ? "copied" : "copy";
-    setTimeout(() => {
-      copyBtn.textContent = "copy";
-    }, 1600);
-  });
-}
-
 // Cert slider arrows
 const track = document.querySelector(".certs-track");
 const prevBtn = document.querySelector(".certs-arrow--prev");
