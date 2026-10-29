@@ -22,8 +22,8 @@ HEADERS = [
     ("Cross-Origin-Resource-Policy", "same-origin"),
     (
         "Content-Security-Policy",
-        "default-src 'none'; img-src 'self' data:; font-src 'self'; style-src 'self'; "
-        "script-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'",
+        "default-src 'none'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; "
+        "script-src 'self' https://www.ascii-magic.com; base-uri 'none'; form-action 'none'; frame-ancestors 'none'",
     ),
 ]
 

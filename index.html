@@ -11,7 +11,7 @@
     <meta name="color-scheme" content="dark" />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'none'; img-src 'self' data:; font-src 'self'; style-src 'self'; script-src 'self'; base-uri 'none'; form-action 'none'"
+      content="default-src 'none'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' https://www.ascii-magic.com; base-uri 'none'; form-action 'none'"
     />
     <meta name="referrer" content="no-referrer" />
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
@@ -27,6 +27,7 @@
     <noscript><link rel="stylesheet" href="no-js.css" /></noscript>
   </head>
   <body>
+    <ascii-art class="art-scene" piece="white-salt-desert-moon" look="dots" dot-size="40" mono aria-hidden="true"></ascii-art>
     <header class="site-head">
       <h1 class="wordmark wordmark--name" aria-label="Rajdeep Putta">
         <span class="wordmark__text" data-type="Rajdeep Putta" aria-hidden="true">Rajdeep Putta</span><span
@@ -189,7 +190,8 @@
       <p class="colophon">hand-written, no framework, no vibe coding.</p>
     </footer>
 
-    <script src="motion.js"></script>
+    <script type="module" src="https://www.ascii-magic.com/ascii/ascii.js"></script>
+    <script src="motion.js?v=4"></script>
     <script src="app.js"></script>
   </body>
 </html>
