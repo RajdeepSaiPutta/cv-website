@@ -27,15 +27,46 @@
     }
   }
 
-  // match the old moving-ascii scale: the whole landscape fits the window.
-  // fill the width exactly, center whatever slack remains vertically.
+  // the stage is always a 16:9 rectangle, inset a little from the window
+  // (zoomed out, bands of plain background around it). ultrawide monitors
+  // get vertical full-height and side bands, so the art keeps its 16:9
+  // shape everywhere. phones crop to a single mountain instead.
+  const MOBILE = 700;
+
   function fit() {
     const w = pre.offsetWidth;
     const h = pre.offsetHeight;
     if (!w || !h) return;
-    const s = window.innerWidth / w;
-    const slack = Math.max(0, window.innerHeight - h * s);
-    wrap.style.transform = "scale(" + s.toFixed(4) + ") translate(0, " + (slack / 2 / s).toFixed(1) + "px)";
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+
+    if (vw < MOBILE) {
+      // one mountain and the rider above it: the left 30 of 79 columns,
+      // rows 1-15, at a single undistorted scale
+      const frac = 30 / 79;
+      const s = vw / (w * frac);
+      const rowsShown = 14;
+      const lh = h / 22;
+      const tx = 0;
+      const ty = (vh - rowsShown * lh * s) / 2 - lh * s;
+      wrap.style.transform = "scale(" + s.toFixed(4) + ") translate(0px, " + (ty / s).toFixed(1) + "px)";
+      return;
+    }
+
+    const m = 0.06;
+    let stageW, stageH;
+    if (vw / vh >= 16 / 9) {
+      stageH = vh * (1 - 2 * m);
+      stageW = (stageH * 16) / 9;
+    } else {
+      stageW = vw * (1 - 2 * m);
+      stageH = (stageW * 9) / 16;
+    }
+    const tx = (vw - stageW) / 2;
+    const ty = (vh - stageH) / 2;
+    wrap.style.transform =
+      "translate(" + tx.toFixed(1) + "px, " + ty.toFixed(1) + "px)" +
+      " scale(" + (stageW / w).toFixed(4) + ", " + (stageH / h).toFixed(4) + ")";
   }
 
   new ResizeObserver(fit).observe(wrap);

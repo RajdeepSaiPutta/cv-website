@@ -38,6 +38,9 @@ class Handler(SimpleHTTPRequestHandler):
     def end_headers(self):
         for name, value in HEADERS:
             self.send_header(name, value)
+        p = self.translate_path(self.path)
+        if p.endswith(".js") or p.endswith(".css"):
+            self.send_header("Cache-Control", "no-cache")
         super().end_headers()
 
     def list_directory(self, path):
