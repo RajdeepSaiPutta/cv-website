@@ -1,5 +1,13 @@
 const sites = [
   {
+    name: "Stethos",
+    url: "https://github.com/RajdeepSaiPutta/stethos",
+    shown: "github.com/RajdeepSaiPutta/stethos",
+    shot: "assets/stethos-app.png",
+    access: "public",
+    desc: "A desktop workstation for respiratory diagnostics that fuses three modalities into one assessment. Breath-sound recordings are classified as normal, crackle or wheeze through a log-mel spectrogram CNN; chest X-rays go through pathology classification and lung segmentation; spirometry files are read for PFT patterns and GOLD staging. A cross-attention fusion layer combines the evidence into a single risk level with per-modality contributions, and the report view ties it together with export to PDF, FHIR, DICOM-SR or raw JSON. Inference runs in a local Python sidecar plugin system with CUDA acceleration and CPU as a fallback, the interface has the flat chrome of a real medical workbench, and without trained checkpoints the models fall back to locally-initialized weights so the full pipeline stays runnable end to end.",
+  },
+  {
     name: "Evaluator",
     url: "https://github.com/RajdeepSaiPutta/evaluator-gui",
     shown: "github.com/RajdeepSaiPutta/evaluator-gui",
@@ -46,14 +54,6 @@ const sites = [
     shot: "assets/mako-app.png",
     access: "public",
     desc: "A research agent built around a deliberately layered system design. The backend is a FastAPI application split into independent modules: session storage, document ingestion, a URL scraper, and a tool-calling core, each replaceable on its own. Inside the agent loop, a Groq language model plans and executes research steps, while Google search supplies citations and raw information; the model decides when to search, reads the results, and calls back into itself until the material is enough. The writing is done in Groq passes over the gathered sources, and the browser front-end runs a four-stage workspace (links, research, results, chat) with saved sessions so a research run can be resumed. Every stage runs through explicit hand-offs rather than one large prompt, which keeps the research inspectable and the drafting rerunnable.",
-  },
-  {
-    name: "StethOS",
-    url: "https://github.com/RajdeepSaiPutta/stethos",
-    shown: "github.com/RajdeepSaiPutta/stethos",
-    shot: "assets/stethos-app.png",
-    access: "public",
-    desc: "A desktop workstation for respiratory diagnostics that fuses three modalities into one assessment. Breath-sound recordings are classified as normal, crackle or wheeze through a log-mel spectrogram CNN; chest X-rays go through pathology classification and lung segmentation; spirometry files are read for PFT patterns and GOLD staging. A cross-attention fusion layer combines the evidence into a single risk level with per-modality contributions, and the report view ties it together with export to PDF, FHIR, DICOM-SR or raw JSON. The interface is Tauri and React, inference runs in a local Python sidecar plugin system, and without trained checkpoints the models fall back to locally-initialized weights so the full pipeline stays runnable end to end.",
   },
 ];
 
