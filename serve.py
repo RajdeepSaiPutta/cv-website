@@ -23,7 +23,7 @@ HEADERS = [
     (
         "Content-Security-Policy",
         "default-src 'none'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; "
-        "script-src 'self' 'unsafe-inline' https://www.ascii-magic.com; base-uri 'none'; form-action 'none'; frame-ancestors 'none'",
+        "script-src 'self' 'unsafe-inline'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'",
     ),
 ]
 

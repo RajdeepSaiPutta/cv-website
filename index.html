@@ -11,7 +11,7 @@
     <meta name="color-scheme" content="dark" />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'none'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://www.ascii-magic.com; base-uri 'none'; form-action 'none'"
+      content="default-src 'none'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; base-uri 'none'; form-action 'none'"
     />
     <meta name="referrer" content="no-referrer" />
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
@@ -25,10 +25,33 @@
       crossorigin
     />
     <noscript><link rel="stylesheet" href="no-js.css" /></noscript>
-  <script type="module" src="https://www.ascii-magic.com/ascii/ascii.js"></script>
   </head>
   <body>
-    <ascii-art class="art-scene" piece="white-salt-desert-moon" look="dots" size="32" speed="2.5" dot-size="40" mono aria-hidden="true"></ascii-art>
+    <script type="text/plain" id="ascii-bg-text">
+          .           .     .                .       .
+  .      .      *           .       .          .                       .
+                 .       .   . *     "Choose a job you love, and you will
+  .       ____     .      . .       .   never have to work a day in your life"
+         <WW>>>         .        .               .
+ .   .  /WWWI; \  .       .    .  ____               .         .     .
+  *    /WWWWI; \=====;    .     /WI; \   *    .        /\_             .
+  .   /WWWWWII;..      \_  . ___/WI;:. \     .        _/M; \    .   .         .
+     /WWWWWIIIIi;..      \__/WWWIIII:.. \____ .   .  /MMI:  \   * .
+ . _/WWWWWIIIi;;;:...:   ;\WWWWWWIIIII;.     \     /MMWII;   \    .  .     .
+  /WWWWWIWIiii;;;.:.. :   ;\WWWWWIII;;;::     \___/MMWIIII;   \              .
+ /WWWWWIIIIiii;;::.... :   ;|WWWWWWII;;::.:      :;IMWIIIII;:   \___     *
+/WWWWWWWWWIIIIIWIIii;;::;..;\WWWWWWIII;;;:::...    ;IMIII;;     ::  \     .
+WWWWWWWWWIIIIIIIIIii;;::.;..;\WWWWWWWWIIIII;;..  :;IMIII;:::     :    \
+WWWWWWWWWWWWWIIIIIIii;;::..;..;\WWWWWWWWIIII;::; :::::::::.....::       \
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%XXXXXXX
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%XXXXXXXXXX
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%XXXXXXXXXXXXX
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%XXXXXXXXXXXXXXXXX
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%XXXXXXXXXXXXXXXXXXXX
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%XXXXXXXXXXXXXXXXXXXXXXXXXX
+    </script>
+    <div class="ascii-bg" aria-hidden="true"><pre class="ascii-bg__pre"></pre></div>
+
     <header class="site-head">
       <h1 class="wordmark wordmark--name" aria-label="Rajdeep Putta">
         <span class="wordmark__text" data-type="Rajdeep Putta" aria-hidden="true">Rajdeep Putta</span><span
@@ -199,7 +222,9 @@
       <img class="lightbox__img" src="" alt="" />
     </div>
 
+    <script src="custom-ascii.js"></script>
     <script src="motion.js?v=4"></script>
     <script src="app.js"></script>
   </body>
 </html>
+                    
