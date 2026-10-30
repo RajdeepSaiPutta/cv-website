@@ -27,13 +27,15 @@
     }
   }
 
-  // cover the viewport whatever its aspect ratio: scale by the bigger ratio
+  // match the old moving-ascii scale: the whole landscape fits the window.
+  // fill the width exactly, center whatever slack remains vertically.
   function fit() {
     const w = pre.offsetWidth;
     const h = pre.offsetHeight;
     if (!w || !h) return;
-    const s = Math.max(window.innerWidth / w, window.innerHeight / h) + 0.04;
-    wrap.style.transform = "scale(" + s.toFixed(4) + ")";
+    const s = window.innerWidth / w;
+    const slack = Math.max(0, window.innerHeight - h * s);
+    wrap.style.transform = "scale(" + s.toFixed(4) + ") translate(0, " + (slack / 2 / s).toFixed(1) + "px)";
   }
 
   new ResizeObserver(fit).observe(wrap);
