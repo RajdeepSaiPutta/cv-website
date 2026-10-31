@@ -32,7 +32,7 @@
   // ultrawide = side bands; tall = top/bottom bands; mobile = crop to one mountain.
   const MOBILE = 700;
   const STAGE_ASPECT = 16 / 9;
-  const MARGIN = 0.06; // 6% inset from viewport edges
+  const MARGIN = 0.02; // 2% inset - art fills more of viewport
 
   function fit() {
     const w = pre.offsetWidth;
