@@ -27,11 +27,12 @@
     }
   }
 
-  // the stage is always a 16:9 rectangle, inset a little from the window
-  // (zoomed out, bands of plain background around it). ultrawide monitors
-  // get vertical full-height and side bands, so the art keeps its 16:9
-  // shape everywhere. phones crop to a single mountain instead.
+  // the stage is always a 16:9 rectangle, inset a little from the window.
+  // uniform scale preserves monospace character cells (no distortion).
+  // ultrawide = side bands; tall = top/bottom bands; mobile = crop to one mountain.
   const MOBILE = 700;
+  const STAGE_ASPECT = 16 / 9;
+  const MARGIN = 0.06; // 6% inset from viewport edges
 
   function fit() {
     const w = pre.offsetWidth;
@@ -41,32 +42,37 @@
     const vh = window.innerHeight;
 
     if (vw < MOBILE) {
-      // one mountain and the rider above it: the left 30 of 79 columns,
-      // rows 1-15, at a single undistorted scale
+      // mobile: crop to left mountain (30/79 cols), rows 1-15, uniform scale
       const frac = 30 / 79;
       const s = vw / (w * frac);
       const rowsShown = 14;
       const lh = h / 22;
-      const tx = 0;
       const ty = (vh - rowsShown * lh * s) / 2 - lh * s;
       wrap.style.transform = "scale(" + s.toFixed(4) + ") translate(0px, " + (ty / s).toFixed(1) + "px)";
       return;
     }
 
-    const m = 0.06;
+    // desktop/ultrawide: 16:9 stage with MARGIN inset
     let stageW, stageH;
-    if (vw / vh >= 16 / 9) {
-      stageH = vh * (1 - 2 * m);
-      stageW = (stageH * 16) / 9;
+    if (vw / vh >= STAGE_ASPECT) {
+      stageH = vh * (1 - 2 * MARGIN);
+      stageW = stageH * STAGE_ASPECT;
     } else {
-      stageW = vw * (1 - 2 * m);
-      stageH = (stageW * 9) / 16;
+      stageW = vw * (1 - 2 * MARGIN);
+      stageH = stageW / STAGE_ASPECT;
     }
-    const tx = (vw - stageW) / 2;
-    const ty = (vh - stageH) / 2;
+
+    // uniform scale so character cells stay square-ish
+    const sx = stageW / w;
+    const sy = stageH / h;
+    const s = Math.min(sx, sy);
+
+    // center within the stage
+    const tx = (vw - w * s) / 2;
+    const ty = (vh - h * s) / 2;
+
     wrap.style.transform =
-      "translate(" + tx.toFixed(1) + "px, " + ty.toFixed(1) + "px)" +
-      " scale(" + (stageW / w).toFixed(4) + ", " + (stageH / h).toFixed(4) + ")";
+      "translate(" + tx.toFixed(1) + "px, " + ty.toFixed(1) + "px) scale(" + s.toFixed(4) + ")";
   }
 
   new ResizeObserver(fit).observe(wrap);
