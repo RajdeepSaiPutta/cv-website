@@ -50,9 +50,10 @@ function fit() {
       return;
     }
 
-    const s = (vw * (1 - 2 * MARGIN)) / w;
-    const tx = vw * MARGIN;
-    const ty = (vh - h * s) / 2;
+    // desktop / ultrawide: natural size, centered (no scaling down)
+    const s = 1.0;
+    const tx = (vw - w) / 2;
+    const ty = (vh - h) / 2;
 
     wrap.style.transform =
       "translate(" + tx.toFixed(1) + "px, " + ty.toFixed(1) + "px) scale(" + s.toFixed(4) + ")";
