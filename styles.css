@@ -955,7 +955,7 @@ html.js .reveal.is-in {
   margin: 0;
   font-family: ui-monospace, sfmono-regular, menlo, consolas, "liberation mono", monospace;
   font-size: 12px;
-  letter-spacing: 0.6em;
+  letter-spacing: 0;
   line-height: 14px;
   white-space: pre;
   color: #a3a8ac;
