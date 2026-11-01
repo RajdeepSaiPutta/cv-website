@@ -50,9 +50,12 @@ function fit() {
       return;
     }
 
-    // desktop / ultrawide: width-fill with small margin, uniform scale, center vertically.
-    const s = (vw * (1 - 2 * MARGIN)) / w;
-    const tx = vw * MARGIN;
+    // desktop / ultrawide: uniform scale that fits within viewport,
+    // centered with bands around it. ultrawide keeps 16:9 shape (side bands).
+    const sx = (vw * (1 - 2 * MARGIN)) / w;
+    const sy = (vh * (1 - 2 * MARGIN)) / h;
+    const s = Math.min(sx, sy);
+    const tx = (vw - w * s) / 2;
     const ty = (vh - h * s) / 2;
 
     wrap.style.transform =
