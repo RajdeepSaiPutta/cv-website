@@ -1,6 +1,8 @@
-// custom ascii background: the rider landscape with the confucius quote.
-// the art ships inside the page as <script type="text/plain" id="ascii-bg-text">
-// so there is no network fetch and CSP stays 'self'-only.
+// custom ascii background: one-mountain crop of the landscape art.
+// the full art ships inside the page as <script type="text/plain" id="ascii-bg-text">
+// so there is no network fetch and CSP stays 'self'-only. we render only a single
+// mountain (a fixed row/col crop) and scale it uniformly inside a 16:9-bounded
+// stage, so it never stretches wider than 16:9 and phones just see the one mountain.
 
 (() => {
   const holder = document.getElementById("ascii-bg-text");
@@ -8,16 +10,27 @@
   const pre = wrap && wrap.querySelector(".ascii-bg__pre");
   if (!holder || !wrap || !pre) return;
 
-  // the opening tag adds one newline at the start - drop it
+  // crop window: rows 3-20 (peak through ground), cols 0-27 (the big left
+  // mountain and its ridge) of the embedded art.
+  const ROW_START = 3;
+  const ROW_END = 20;
+  const COL_START = 0;
+  const COL_END = 27;
+
   const art = holder.textContent.replace(/^\n/, "");
   const lines = art.split("\n");
 
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  // slice out exactly one mountain
+  const mountain = lines
+    .slice(ROW_START, ROW_END + 1)
+    .map((l) => l.slice(COL_START, COL_END).replace(/\s+$/, ""));
+
   pre.textContent = "";
 
   function build() {
-    for (const line of lines) {
+    for (const line of mountain) {
       const span = document.createElement("span");
       span.className = "ascii-bg__line";
       span.style.display = "block";
@@ -27,47 +40,35 @@
     }
   }
 
-  // desktop / ultrawide: width-fill with small margin, uniform scale, center vertically.
-// ultrawide keeps the same scale as 16:9 (side bands appear naturally).
-const MOBILE = 700;
-const MARGIN = 0.02; // 2% inset each side
+  // every viewport: uniform contain-fit inside a 16:9-capped stage, centered.
+  // a 16:9 display fills it edge to edge; ultrawide gets side bands; phones get
+  // the same single mountain, width-bound.
+  const MARGIN = 0.02; // 2% inset each side
 
-function fit() {
+  function fit() {
     const w = pre.offsetWidth;
     const h = pre.offsetHeight;
     if (!w || !h) return;
     const vw = window.innerWidth;
     const vh = window.innerHeight;
 
-    if (vw < MOBILE) {
-      // mobile: crop to left mountain (30/79 cols), rows 1-15, uniform scale
-      const frac = 30 / 79;
-      const s = vw / (w * frac);
-      const rowsShown = 14;
-      const lh = h / 22;
-      const ty = (vh - rowsShown * lh * s) / 2 - lh * s;
-      wrap.style.transform = "scale(" + s.toFixed(4) + ") translate(0px, " + (ty / s).toFixed(1) + "px)";
-      return;
-    }
+    const maxW = vw * (1 - 2 * MARGIN);
+    const maxH = vh * (1 - 2 * MARGIN);
 
-    // desktop / ultrawide: stage capped at 16:9 so it never stretches wider
-    // than 16:9. ultrawide = height-bound with side bands; 16:9/narrow =
-    // width-bound with top/bottom bands. art fits stage width.
-    const stageH = vh * (1 - 2 * MARGIN);
-    const stageW = stageH * (16 / 9);
-
+    // stage is never wider than 16:9
     let finalW, finalH;
-    if (stageW > vw * (1 - 2 * MARGIN)) {
-      finalW = vw * (1 - 2 * MARGIN);
-      finalH = finalW / (16 / 9);
+    if (maxW / maxH > 16 / 9) {
+      finalH = maxH;
+      finalW = finalH * (16 / 9); // ultrawide: side bands
     } else {
-      finalW = stageW;
-      finalH = stageH;
+      finalW = maxW;
+      finalH = finalW * (9 / 16); // 16:9 or narrower/taller: top/bottom bands
     }
 
-    const s = finalW / w;
-    const tx = (vw - finalW) / 2;
-    const ty = (vh - finalH) / 2;
+    // uniform scale, never distort past the 16:9 stage
+    const s = Math.min(finalW / w, finalH / h);
+    const tx = (vw - w * s) / 2;
+    const ty = (vh - h * s) / 2;
 
     wrap.style.transform =
       "translate(" + tx.toFixed(1) + "px, " + ty.toFixed(1) + "px) scale(" + s.toFixed(4) + ")";
