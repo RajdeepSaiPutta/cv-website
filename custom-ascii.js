@@ -27,14 +27,12 @@
     }
   }
 
-  // the stage is always a 16:9 rectangle, inset a little from the window.
-  // uniform scale preserves monospace character cells (no distortion).
-  // ultrawide = side bands; tall = top/bottom bands; mobile = crop to one mountain.
-  const MOBILE = 700;
-  const STAGE_ASPECT = 16 / 9;
-  const MARGIN = 0.02; // 2% inset - art fills more of viewport
+  // desktop / ultrawide: width-fill with small margin, uniform scale, center vertically.
+// ultrawide keeps the same scale as 16:9 (side bands appear naturally).
+const MOBILE = 700;
+const MARGIN = 0.02; // 2% inset each side
 
-  function fit() {
+function fit() {
     const w = pre.offsetWidth;
     const h = pre.offsetHeight;
     if (!w || !h) return;
@@ -52,23 +50,8 @@
       return;
     }
 
-    // desktop/ultrawide: 16:9 stage with MARGIN inset
-    let stageW, stageH;
-    if (vw / vh >= STAGE_ASPECT) {
-      stageH = vh * (1 - 2 * MARGIN);
-      stageW = stageH * STAGE_ASPECT;
-    } else {
-      stageW = vw * (1 - 2 * MARGIN);
-      stageH = stageW / STAGE_ASPECT;
-    }
-
-    // uniform scale so character cells stay square-ish
-    const sx = stageW / w;
-    const sy = stageH / h;
-    const s = Math.min(sx, sy);
-
-    // center within the stage
-    const tx = (vw - w * s) / 2;
+    const s = (vw * (1 - 2 * MARGIN)) / w;
+    const tx = vw * MARGIN;
     const ty = (vh - h * s) / 2;
 
     wrap.style.transform =
