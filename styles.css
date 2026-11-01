@@ -299,6 +299,32 @@ html.js .reveal.is-in {
   color: var(--text-faint);
 }
 
+/* —— about me —— */
+
+.about {
+  max-inline-size: var(--max);
+  margin-inline: auto;
+  padding: 2rem 1rem 2rem;
+  border-block-start: 1px solid var(--border);
+}
+
+.about__title {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-block-end: 1rem;
+  text-align: center;
+}
+
+.about__body {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-soft);
+  max-inline-size: 44rem;
+  margin-inline: auto;
+  margin-block-end: 1rem;
+}
+
 /* —— work experience, certifications, guest lecture —— */
 
 .section {

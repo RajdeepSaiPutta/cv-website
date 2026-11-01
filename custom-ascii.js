@@ -50,13 +50,24 @@ function fit() {
       return;
     }
 
-    // desktop / ultrawide: uniform scale that fits within viewport,
-    // centered with bands around it. ultrawide keeps 16:9 shape (side bands).
-    const sx = (vw * (1 - 2 * MARGIN)) / w;
-    const sy = (vh * (1 - 2 * MARGIN)) / h;
-    const s = Math.min(sx, sy);
-    const tx = (vw - w * s) / 2;
-    const ty = (vh - h * s) / 2;
+    // desktop / ultrawide: stage capped at 16:9 so it never stretches wider
+    // than 16:9. ultrawide = height-bound with side bands; 16:9/narrow =
+    // width-bound with top/bottom bands. art fits stage width.
+    const stageH = vh * (1 - 2 * MARGIN);
+    const stageW = stageH * (16 / 9);
+
+    let finalW, finalH;
+    if (stageW > vw * (1 - 2 * MARGIN)) {
+      finalW = vw * (1 - 2 * MARGIN);
+      finalH = finalW / (16 / 9);
+    } else {
+      finalW = stageW;
+      finalH = stageH;
+    }
+
+    const s = finalW / w;
+    const tx = (vw - finalW) / 2;
+    const ty = (vh - finalH) / 2;
 
     wrap.style.transform =
       "translate(" + tx.toFixed(1) + "px, " + ty.toFixed(1) + "px) scale(" + s.toFixed(4) + ")";
