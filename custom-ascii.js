@@ -1,8 +1,8 @@
-// custom ascii background: one-mountain crop of the landscape art.
-// the full art ships inside the page as <script type="text/plain" id="ascii-bg-text">
-// so there is no network fetch and CSP stays 'self'-only. we render only a single
-// mountain (a fixed row/col crop) and scale it uniformly inside a 16:9-bounded
-// stage, so it never stretches wider than 16:9 and phones just see the one mountain.
+// custom ascii background: full landscape art on desktop, a single-mountain
+// crop on phones. the full art ships inside the page as
+// <script type="text/plain" id="ascii-bg-text"> so there is no network fetch
+// and CSP stays 'self'-only. scaling is uniform inside a 16:9-bounded stage,
+// so the art never stretches wider than 16:9.
 
 (() => {
   const holder = document.getElementById("ascii-bg-text");
@@ -10,8 +10,8 @@
   const pre = wrap && wrap.querySelector(".ascii-bg__pre");
   if (!holder || !wrap || !pre) return;
 
-  // crop window: rows 3-20 (peak through ground), cols 0-27 (the big left
-  // mountain and its ridge) of the embedded art.
+  // single-mountain crop: the big left peak (peak, ridge, % ground). used on
+  // narrow screens only.
   const ROW_START = 3;
   const ROW_END = 20;
   const COL_START = 0;
@@ -20,37 +20,48 @@
   const art = holder.textContent.replace(/^\n/, "");
   const lines = art.split("\n");
 
-  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  // slice out exactly one mountain
+  const full = lines.map((l) => l.replace(/\s+$/, ""));
   const mountain = lines
     .slice(ROW_START, ROW_END + 1)
     .map((l) => l.slice(COL_START, COL_END).replace(/\s+$/, ""));
 
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
   pre.textContent = "";
 
-  function build() {
-    for (const line of mountain) {
+  const MOBILE = 700;
+  const MARGIN = 0.02; // 2% inset each side
+
+  let mode = null;
+  let revealed = false;
+
+  function setMode(next) {
+    if (mode === next) return;
+    mode = next;
+    const src = next === "mobile" ? mountain : full;
+    pre.textContent = "";
+    src.forEach((line, i) => {
       const span = document.createElement("span");
       span.className = "ascii-bg__line";
       span.style.display = "block";
       span.textContent = line || " ";
-      if (reduced) span.classList.add("is-in");
+      if (reduced || revealed) span.classList.add("is-in");
       pre.appendChild(span);
-    }
+    });
   }
 
   // every viewport: uniform contain-fit inside a 16:9-capped stage, centered.
-  // a 16:9 display fills it edge to edge; ultrawide gets side bands; phones get
-  // the same single mountain, width-bound.
-  const MARGIN = 0.02; // 2% inset each side
-
+  // a 16:9 display fits the stage edge to edge; ultrawide gets side bands;
+  // phones get the single mountain, width-bound.
   function fit() {
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+
+    setMode(vw < MOBILE ? "mobile" : "desktop");
+
     const w = pre.offsetWidth;
     const h = pre.offsetHeight;
     if (!w || !h) return;
-    const vw = window.innerWidth;
-    const vh = window.innerHeight;
 
     const maxW = vw * (1 - 2 * MARGIN);
     const maxH = vh * (1 - 2 * MARGIN);
@@ -77,17 +88,17 @@
   new ResizeObserver(fit).observe(wrap);
   window.addEventListener("resize", fit);
 
-  build();
   fit();
   for (const delay of [300, 900, 2000]) setTimeout(fit, delay);
 
   if (reduced) return;
 
   // fast staggered reveal so the art reads before the name fade finishes
-  const spans = [...pre.children];
+  let spans = [...pre.children];
   spans.forEach((span, i) => {
     setTimeout(() => span.classList.add("is-in"), i * 28);
   });
+  revealed = true;
 })();
 
 // reduced-motion: instantly reveal all content
