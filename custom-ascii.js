@@ -66,6 +66,17 @@
     const maxW = vw * (1 - 2 * MARGIN);
     const maxH = vh * (1 - 2 * MARGIN);
 
+    if (vw < MOBILE) {
+      // phones: contain the single mountain in the FULL viewport (the 16:9
+      // stage cap is a desktop rule). the crop is portrait-ish, so on a
+      // portrait phone this is width-bound: one mountain, filling the width.
+      const s = Math.min(maxW / w, maxH / h);
+      const ty = (vh - h * s) / 2;
+      wrap.style.transform =
+        "translate(0px, " + ty.toFixed(1) + "px) scale(" + s.toFixed(4) + ")";
+      return;
+    }
+
     // stage is never wider than 16:9
     let finalW, finalH;
     if (maxW / maxH > 16 / 9) {
