@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en" class="js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Rajdeep Putta</title>
+    <meta
+      name="description"
+      content="A directory of the things I build, with screenshots."
+    />
+    <meta name="color-scheme" content="dark" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; base-uri 'none'; form-action 'none'"
+    />
+    <meta name="referrer" content="no-referrer" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#1f2123" />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="preload"
+      href="assets/fonts/libre-caslon-display-400.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <noscript><link rel="stylesheet" href="no-js.css" /></noscript>
+  </head>
+  <body>
+    <script type="text/plain" id="ascii-bg-text">
+          .           .     .                .       .
+  .      .      *           .       .          .                       .
+                 .       .   . *     "Choose a job you love, and you will
+  .       ____     .      . .       .   never have to work a day in your life"
+         <WW>>>         .        .               .
+ .   .  /WWWI; \  .       .    .  ____               .         .     .
+  *    /WWWWI; \=====;    .     /WI; \   *    .        /\_             .
+  .   /WWWWWII;..      \_  . ___/WI;:. \     .        _/M; \    .   .         .
+     /WWWWWIIIIi;..      \__/WWWIIII:.. \____ .   .  /MMI:  \   * .
+ . _/WWWWWIIIi;;;:...:   ;\WWWWWWIIIII;.     \     /MMWII;   \    .  .     .
+  /WWWWWIWIiii;;;.:.. :   ;\WWWWWIII;;;::     \___/MMWIIII;   \              .
+ /WWWWWIIIIiii;;::.... :   ;|WWWWWWII;;::.:      :;IMWIIIII;:   \___     *
+/WWWWWWWWWIIIIIWIIii;;::;..;\WWWWWWIII;;;:::...    ;IMIII;;     ::  \     .
+WWWWWWWWWIIIIIIIIIii;;::.;..;\WWWWWWWWIIIII;;..  :;IMIII;:::     :    \
+WWWWWWWWWWWWWIIIIIIii;;::..;..;\WWWWWWWWIIII;::; :::::::::.....::       \
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%XXXXXXX
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%XXXXXXXXXX
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%XXXXXXXXXXXXX
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%XXXXXXXXXXXXXXXXX
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%XXXXXXXXXXXXXXXXXXXX
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%XXXXXXXXXXXXXXXXXXXXXXXXXX
+    </script>
+    <div class="ascii-bg" aria-hidden="true"><pre class="ascii-bg__pre"></pre></div>
+
+    <header class="site-head">
+      <h1 class="wordmark wordmark--name" aria-label="Rajdeep Putta">
+        <span class="wordmark__text" data-type="Rajdeep Putta" aria-hidden="true">Rajdeep Putta</span><span
+          class="wordmark__caret"
+          aria-hidden="true"
+        ></span>
+      </h1>
+
+      <p class="intro reveal">This is a directory of the things I build.</p>
+
+      <p class="intro reveal">
+        <a class="random-link" href="https://huggingface.co/rajdeepp11/500mWithRAG-fromscratch/tree/main" target="_blank" rel="noopener"
+          >Take me to a random project</a
+        >
+      </p>
+
+      <p class="intro reveal">
+        Reach me at <a href="mailto:rajdeepputta@gmail.com">rajdeepputta@gmail.com</a>.
+      </p>
+
+      <div class="head-tools reveal">
+        <span>Hyderabad, India</span>
+        <a href="https://github.com/RajdeepSaiPutta" target="_blank" rel="noopener">Open my GitHub</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="section section--experience reveal" aria-labelledby="experience-title">
+        <h2 class="section__title" id="experience-title">Work Experience</h2>
+
+        <article class="job">
+          <div class="job__head">
+            <h3 class="job__role">Intern</h3>
+            <p class="job__org">Cedura Tech</p>
+          </div>
+          <p class="job__desc">
+            Built mako and voicr with the company's CTO.
+          </p>
+        </article>
+
+        <article class="job">
+          <div class="job__head">
+            <h3 class="job__role">USG Technology</h3>
+            <p class="job__org">Meridian MUN 2026</p>
+          </div>
+          <p class="job__desc">
+            Built the conference website, facilitated over 500 registrations,
+            and handled all tech support.
+          </p>
+        </article>
+      </section>
+
+      <section class="section reveal" aria-labelledby="certifications-title">
+        <h2 class="section__title" id="certifications-title">Certifications</h2>
+        <div class="certs-slider">
+          <button class="certs-arrow certs-arrow--prev" aria-label="previous certificate"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M14.5 5.5 8 12l6.5 6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="certs-track">
+            <figure class="cert cert--thumb reveal">
+              <a href="assets/internship-cedura.png" target="_blank" rel="noopener">
+                <img
+                  src="assets/internship-cedura.png"
+                  alt="Cedura Tech internship certificate."
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
+            </figure>
+            <figure class="cert cert--thumb reveal">
+              <a href="assets/machine-learning-cedlearn.png" target="_blank" rel="noopener">
+                <img
+                  src="assets/machine-learning-cedlearn.png"
+                  alt="Machine learning course certificate."
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
+            </figure>
+            <figure class="cert cert--thumb reveal">
+              <a href="assets/mermun-certificate.png" target="_blank" rel="noopener">
+                <img
+                  src="assets/mermun-certificate.png"
+                  alt="Meridian MUN 2026 certificate of appreciation for USG Technology."
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
+            </figure>
+            <figure class="cert cert--thumb reveal">
+              <a href="assets/freecodecamp-machine-learning-python.png" target="_blank" rel="noopener">
+                <img
+                  src="assets/freecodecamp-machine-learning-python.png"
+                  alt="FreeCodeCamp Machine Learning with Python certificate."
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
+            </figure>
+            <figure class="cert cert--thumb reveal">
+              <a href="assets/kaggle-machine-learning.png" target="_blank" rel="noopener">
+                <img
+                  src="assets/kaggle-machine-learning.png"
+                  alt="Kaggle intro to machine learning certificate."
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
+            </figure>
+            <figure class="cert cert--thumb reveal">
+              <a href="assets/kaggle-deep-learning.png" target="_blank" rel="noopener">
+                <img
+                  src="assets/kaggle-deep-learning.png"
+                  alt="Kaggle intro to deep learning certificate."
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
+            </figure>
+          </div>
+          <button class="certs-arrow certs-arrow--next" aria-label="next certificate"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M9.5 5.5 16 12l-6.5 6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+      </section>
+
+      <section class="section reveal" aria-labelledby="lecture-title">
+        <h2 class="section__title" id="lecture-title">Guest Lecture</h2>
+
+        <p class="section__intro">
+          Gave a guest lecture about machine learning, agentic building, and operations.
+        </p>
+
+        <figure class="lecture">
+          <img
+            src="assets/guest-lecture.jpeg"
+            alt="rajdeep giving a guest lecture to a room of students"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>Guest lecture in progress.</figcaption>
+        </figure>
+      </section>
+
+      <section class="projects reveal" aria-labelledby="projects-title">
+        <h2 class="section__title projects__title" id="projects-title">Projects</h2>
+        <div class="projects-split">
+          <nav class="projects-list">
+            <ul id="grid"></ul>
+          </nav>
+          <aside class="projects-detail" aria-live="polite">
+            <div class="detail-placeholder">Select a project</div>
+            <div class="detail-content" hidden>
+              <button class="detail-close" aria-label="close details">×</button>
+              <img class="detail-shot" src="" alt="" decoding="async" />
+              <h3 class="detail-name"></h3>
+              <p class="detail-status"></p>
+              <p class="detail-desc"></p>
+              <a class="detail-link" target="_blank" rel="noopener">View project →</a>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot reveal">
+      <p>Updated October 2026.</p>
+    </footer>
+
+    <div class="lightbox" hidden>
+      <button class="lightbox__close" aria-label="close certificate">&times;</button>
+      <img class="lightbox__img" src="" alt="" />
+    </div>
+
+    <script src="custom-ascii.js"></script>
+    <script src="motion.js?v=4"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
+                    
