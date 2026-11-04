@@ -3,7 +3,7 @@ const sites = [
     name: "Stethos",
     url: "https://github.com/RajdeepSaiPutta/stethos",
     shown: "github.com/RajdeepSaiPutta/stethos",
-    shot: "assets/stethos-app.png",
+    shot: "assets/stethos-app.webp",
     access: "public",
     desc: "A desktop workstation for respiratory diagnostics that fuses three modalities into one assessment. Breath-sound recordings are classified as normal, crackle or wheeze through a log-mel spectrogram CNN; chest X-rays go through pathology classification and lung segmentation; spirometry files are read for PFT patterns and GOLD staging. A cross-attention fusion layer combines the evidence into a single risk level with per-modality contributions, and the report view ties it together with export to PDF, FHIR, DICOM-SR or raw JSON. Inference runs in a local Python sidecar plugin system with CUDA acceleration and CPU as a fallback, the interface has the flat chrome of a real medical workbench, and without trained checkpoints the models fall back to locally-initialized weights so the full pipeline stays runnable end to end.",
   },
@@ -11,7 +11,7 @@ const sites = [
     name: "Evaluator",
     url: "https://github.com/RajdeepSaiPutta/evaluator-gui",
     shown: "github.com/RajdeepSaiPutta/evaluator-gui",
-    shot: "assets/evaluator-app.png",
+    shot: "assets/evaluator-app.webp",
     access: "private",
     desc: "A desktop application that grades scanned answer sheets end to end. It detects the page, straightens skew, and crops each answer region into alignment with the marking scheme; a language model then scores every answer and writes the rationale for that score. Grading runs on a small model installed on the machine itself, so a full batch of sheets can be scored offline. A teacher dashboard adds class-level analysis: grade distribution, per-question breakdowns, and a moderation control that moves the class mean toward a target without touching individual answers. Packaged with Tauri as a single executable for Linux, Windows, and macOS.",
   },
@@ -19,7 +19,7 @@ const sites = [
     name: "500M LLM",
     url: "https://huggingface.co/rajdeepp11/500mWithRAG-fromscratch/tree/main",
     shown: "huggingface.co/rajdeepp11/500mWithRAG-fromscratch",
-    shot: "assets/500m-app.png",
+    shot: "assets/500m-app.webp",
     access: "public",
     desc: "A five-hundred-million parameter language model trained completely from scratch on a single RTX 5070. Everything around the model was written by hand: the byte-pair-encoding tokenizer trained on the corpus, the FineWeb-Edu ingestion pipeline with deduplication and quality filtering, the mixed-precision training loop, and the cosine learning-rate schedule. On top of the trained weights sits a retrieval-augmented chat interface, which pulls relevant document chunks and feeds them to the model so answers stay grounded in the sources. The whole pipeline, from raw web text to a working chat product, runs from code I wrote.",
   },
@@ -27,7 +27,7 @@ const sites = [
     name: "MedVault",
     url: "https://github.com/RajdeepSaiPutta/medvault",
     shown: "github.com/RajdeepSaiPutta/medvault",
-    shot: "assets/medvault-app.png",
+    shot: "assets/medvault-app.webp",
     access: "private",
     desc: "A vault for medical records. Photograph a report and the app reads the patient details, test names, and results with OCR, turns them into a structured record, and files the report under the correct visit. Every report also gets LLM-written summaries and explanations in plain language, and an explanation screen discusses the reports directly: what a value means and how it compares to the previous visit. Visits line up on a chronological timeline next to doctor's notes, so a full history can be read top to bottom. The file parsing runs on the server, so the phone client stays light.",
   },
@@ -35,7 +35,7 @@ const sites = [
     name: "MerMUN website",
     url: "https://meridianmadhapurmun.pages.dev",
     shown: "meridianmadhapurmun.pages.dev",
-    shot: "assets/mermun-app.png",
+    shot: "assets/mermun-app.webp",
     access: "public",
     desc: "A complete conference platform built for the Meridian Madhapur MUN 2026. Committee pages carry downloadable background guides and agenda material, the registration system tracks delegate details and payment deadlines, and a 3D cinematic hero plays while the page loads. The site carried registration week: it processed over five hundred delegate registrations and stayed available throughout. Hosted on Cloudflare Pages.",
   },
@@ -43,7 +43,7 @@ const sites = [
     name: "Voicr",
     url: "https://github.com/RajdeepSaiPutta/voicr",
     shown: "github.com/RajdeepSaiPutta/voicr",
-    shot: "assets/voicr-app.png",
+    shot: "assets/voicr-app.webp",
     access: "public",
     desc: "A browser-based voice assistant. Microphone audio streams over a WebSocket to the server, where Whisper transcribes the speech. A small language model composes the reply and can use tools mid-conversation, searching the web when it needs facts and keeping notes across turns. The answer streams back and is spoken through text-to-speech, with transcription, reasoning, and synthesis arranged so that no stage blocks the next. Replies come back sharper and faster than mainstream cloud voice assistants like Gemini Live, because every stage overlaps instead of waiting its turn. The result is a conversation you can hold out loud without ever watching a loading spinner.",
   },
@@ -51,7 +51,7 @@ const sites = [
     name: "Mako",
     url: "https://github.com/RajdeepSaiPutta/mako",
     shown: "github.com/RajdeepSaiPutta/mako",
-    shot: "assets/mako-app.png",
+    shot: "assets/mako-app.webp",
     access: "public",
     desc: "A research agent built around a deliberately layered system design. The backend is a FastAPI application split into independent modules: session storage, document ingestion, a URL scraper, and a tool-calling core, each replaceable on its own. Inside the agent loop, a Groq language model plans and executes research steps, while Google search supplies citations and raw information; the model decides when to search, reads the results, and calls back into itself until the material is enough. The writing is done in Groq passes over the gathered sources, and the browser front-end runs a four-stage workspace (links, research, results, chat) with saved sessions so a research run can be resumed. Every stage runs through explicit hand-offs rather than one large prompt, which keeps the research inspectable and the drafting rerunnable.",
   },
@@ -161,7 +161,7 @@ if (lightbox) {
     a.addEventListener("click", e => {
       e.preventDefault();
       const img = a.querySelector("img");
-      openLightbox(img.src, img.alt);
+      openLightbox(img.dataset.full || img.src, img.alt);
     });
   });
 
