@@ -1,16 +1,16 @@
 const sites = [
   {
     name: "Stethos",
-    url: "https://github.com/RajdeepSaiPutta/stethos",
-    shown: "github.com/RajdeepSaiPutta/stethos",
+    url: "https://huggingface.co/rajdeepp11/stethos",
+    shown: "huggingface.co/rajdeepp11/stethos",
     shot: "assets/stethos-app.webp",
     access: "public",
     desc: "A desktop workstation for respiratory diagnostics that fuses three modalities into one assessment. Breath-sound recordings are classified as normal, crackle or wheeze through a log-mel spectrogram CNN; chest X-rays go through pathology classification and lung segmentation; spirometry files are read for PFT patterns and GOLD staging. A cross-attention fusion layer combines the evidence into a single risk level with per-modality contributions, and the report view ties it together with export to PDF, FHIR, DICOM-SR or raw JSON. Inference runs in a local Python sidecar plugin system with CUDA acceleration and CPU as a fallback, the interface has the flat chrome of a real medical workbench, and without trained checkpoints the models fall back to locally-initialized weights so the full pipeline stays runnable end to end.",
   },
   {
     name: "Evaluator",
-    url: "https://github.com/RajdeepSaiPutta/evaluator-gui",
-    shown: "github.com/RajdeepSaiPutta/evaluator-gui",
+    url: "https://github.com/RajdeepSaiPutta/evaluator",
+    shown: "github.com/RajdeepSaiPutta/evaluator",
     shot: "assets/evaluator-app.webp",
     access: "private",
     desc: "A desktop application that grades scanned answer sheets end to end. It detects the page, straightens skew, and crops each answer region into alignment with the marking scheme; a language model then scores every answer and writes the rationale for that score. Grading runs on a small model installed on the machine itself, so a full batch of sheets can be scored offline. A teacher dashboard adds class-level analysis: grade distribution, per-question breakdowns, and a moderation control that moves the class mean toward a target without touching individual answers. Packaged with Tauri as a single executable for Linux, Windows, and macOS.",
