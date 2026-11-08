@@ -12,7 +12,7 @@ const sites = [
     url: "https://github.com/RajdeepSaiPutta/evaluator",
     shown: "github.com/RajdeepSaiPutta/evaluator",
     shot: "assets/evaluator-app.webp",
-    access: "private",
+    access: "public",
     desc: "A desktop application that grades scanned answer sheets end to end. It detects the page, straightens skew, and crops each answer region into alignment with the marking scheme; a language model then scores every answer and writes the rationale for that score. Grading runs on a small model installed on the machine itself, so a full batch of sheets can be scored offline. A teacher dashboard adds class-level analysis: grade distribution, per-question breakdowns, and a moderation control that moves the class mean toward a target without touching individual answers. Packaged with Tauri as a single executable for Linux, Windows, and macOS.",
   },
   {
