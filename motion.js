@@ -50,3 +50,29 @@
   }
 })();
 
+// Update footer date dynamically
+(() => {
+  const footerDate = document.querySelector(".foot p");
+  if (footerDate) {
+    const now = new Date();
+    const month = now.toLocaleString("default", { month: "long" });
+    const year = now.getFullYear();
+    footerDate.textContent = `Updated ${month} ${year}.`;
+  }
+})();
+
+// Random project link: picks from Evaluator, Stethos, 500M LLM
+(() => {
+  const randomLink = document.getElementById("random-project-link");
+  if (randomLink) {
+    const projects = [
+      { name: "Evaluator", url: "https://github.com/RajdeepSaiPutta/evaluator" },
+      { name: "Stethos", url: "https://huggingface.co/rajdeepp11/stethos" },
+      { name: "500M LLM", url: "https://huggingface.co/rajdeepp11/500mWithRAG-fromscratch/tree/main" }
+    ];
+    const pick = projects[Math.floor(Math.random() * projects.length)];
+    randomLink.href = pick.url;
+    randomLink.title = pick.name;
+  }
+})();
+
