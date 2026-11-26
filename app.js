@@ -1,8 +1,8 @@
 const sites = [
   {
     name: "Stethos",
-    url: "https://huggingface.co/rajdeepp11/stethos",
-    shown: "huggingface.co/rajdeepp11/stethos",
+    url: "https://github.com/RajdeepSaiPutta/stethos",
+    shown: "github.com/RajdeepSaiPutta/stethos",
     shot: "assets/stethos-app.webp",
     access: "public",
     desc: "Three models trained from scratch on clinical data power this respiratory diagnostic workstation. A log-mel spectrogram CNN (ResNet-18, 11M params) classifies breath sounds — normal, crackle, wheeze — at 94% balanced accuracy. An EfficientNet-B0 + U-Net++ dual head segments lungs and classifies pathology on chest X-rays (50k studies, Dice 0.91). A temporal CNN-LSTM reads spirometry flow-volume curves and outputs PFT patterns with GOLD stage. A 4-head cross-attention fusion layer combines modality embeddings into a risk score with per-modality attribution. Inference runs locally via ONNX Runtime with CUDA providers and CPU fallback; models initialize with local weights when checkpoints are absent so the pipeline stays runnable. Exports to PDF, FHIR R4, DICOM-SR TID 1500, and raw JSON. Every component — model architectures, fusion layer, sidecar orchestration, Tauri/React frontend — was built in-house. No external APIs. No cloud dependencies.",
