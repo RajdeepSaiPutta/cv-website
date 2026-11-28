@@ -64,15 +64,36 @@
 // Random project link: picks from Evaluator, Stethos, 500M LLM
 (() => {
   const randomLink = document.getElementById("random-project-link");
-  if (randomLink) {
-    const projects = [
-      { name: "Evaluator", url: "https://github.com/RajdeepSaiPutta/evaluator" },
-      { name: "Stethos", url: "https://huggingface.co/rajdeepp11/stethos" },
-      { name: "500M LLM", url: "https://huggingface.co/rajdeepp11/500mWithRAG-fromscratch/tree/main" }
-    ];
-    const pick = projects[Math.floor(Math.random() * projects.length)];
-    randomLink.href = pick.url;
-    randomLink.title = pick.name;
+  if (!randomLink) return;
+
+  const projects = [
+    { name: "Evaluator", url: "https://github.com/RajdeepSaiPutta/evaluator" },
+    { name: "Stethos", url: "https://github.com/RajdeepSaiPutta/stethos" },
+    { name: "500M LLM", url: "https://huggingface.co/rajdeepp11/500mWithRAG-fromscratch/tree/main" }
+  ];
+
+  let current = -1;
+
+  function pick() {
+    let next = Math.floor(Math.random() * projects.length);
+    // never hand out the same project twice in a row
+    if (projects.length > 1 && next === current) {
+      next = (next + 1 + Math.floor(Math.random() * (projects.length - 1))) % projects.length;
+    }
+    current = next;
+    randomLink.href = projects[next].url;
+    randomLink.title = projects[next].name;
   }
+
+  pick();
+
+  // the new tab opens with the project currently shown, then the link
+  // re-rolls so the next click lands somewhere else
+  randomLink.addEventListener("click", () => {
+    setTimeout(pick, 0);
+  });
+  randomLink.addEventListener("auxclick", () => {
+    setTimeout(pick, 0);
+  });
 })();
 
